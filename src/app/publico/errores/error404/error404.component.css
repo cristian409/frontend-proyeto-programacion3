@@ -1,0 +1,15 @@
+.contenidoError{
+    width: 100%;
+    border: 2px solid #bdbdbd;
+    text-align: center;
+}
+
+.digitoError{
+    color: red;
+    font-weight: bold;
+}
+
+.enunciadoError{
+    color: gray;
+    font-weight: lighter;
+}
