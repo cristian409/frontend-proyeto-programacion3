@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { usuarioModelo } from 'src/app/modelos/usuario.modelo';
+import { SeguridadService } from 'src/app/servicio/seguridad.service';
 
 @Component({
   selector: 'app-barra-navegacion-superior',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraNavegacionSuperiorComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn: boolean = false;
+
+  suscripcion: Subscription = new Subscription;
+
+  constructor(private servicioSeguridad: SeguridadService) { }
 
   ngOnInit(): void {
+    this.suscripcion = this.servicioSeguridad.obtenerDatosSession().subscribe((datos: usuarioModelo) => {
+      this.isLoggedIn = datos.isLoggedIn;
+    });
   }
 
 }
