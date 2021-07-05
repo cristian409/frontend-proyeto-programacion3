@@ -5,25 +5,29 @@ import { InicioComponent } from './publico/inicio/inicio.component';
 
 const routes: Routes = [
   { 
-    path:'Inicio',
+    path:'inicio',
     component: InicioComponent 
   },
   { 
     path:'',
     pathMatch: 'full',
-    redirectTo: '/Inicio'
+    redirectTo: '/inicio'
   },
   {
     path: 'parametros',
     loadChildren: () => import('./modulos/parametrizacion/parametrizacion.module').then(m => m.ParametrizacionModule)
   },
+  {
+    path: 'seguridad',
+    loadChildren: () => import('./modulos/seguridad/seguridad.module').then(m => m.SeguridadModule)
+  },
   { 
-    path:'404',
+    path:'error-404',
     component: Error404Component
   },
   {
     path: '**',
-    redirectTo: '/404'
+    redirectTo: '/error-404'
   }
 ];
 

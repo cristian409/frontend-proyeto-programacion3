@@ -1,7 +1,8 @@
 .contenidoError{
     width: 100%;
-    border: 2px solid #bdbdbd;
+    border: 2px solid #efefef;
     text-align: center;
+    margin: 2%;
 }
 
 .digitoError{

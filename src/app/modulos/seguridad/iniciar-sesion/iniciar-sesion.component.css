@@ -1,0 +1,17 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway";
+}
+  
+.card-title {
+    font-weight: bolder;
+}
+
+.card {
+    top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.mensajeValidacion{
+    color: red;
+}
