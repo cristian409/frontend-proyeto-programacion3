@@ -9,6 +9,9 @@ import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+
+
 @NgModule({
   declarations: [
     IniciarSesionComponent,
@@ -20,7 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SeguridadRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ]
 })
 export class SeguridadModule { }

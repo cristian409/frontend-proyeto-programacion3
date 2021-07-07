@@ -4,7 +4,11 @@ import { usuarioModelo } from 'src/app/modelos/usuario.modelo';
 import * as crypto from 'crypto-js'
 import { SeguridadService } from 'src/app/servicio/seguridad.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
+export interface FormModel {
+  captcha?: String;
+};
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
@@ -13,6 +17,9 @@ import { Router } from '@angular/router';
 export class IniciarSesionComponent implements OnInit {
 
   fgValidacion: FormGroup = this.fb.group({});
+
+  formModel: FormModel = {};
+  recaptchaKey = environment.recaptchaKey;
 
   constructor(private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
