@@ -24,6 +24,15 @@ export class SeguridadService {
     }
   }
 
+  obtenerToken(){
+    let datos = this.obtenerDatosLocalStorage();
+    if (datos) {
+      let objetoDatos: usuarioModelo = JSON.parse(datos);
+      return objetoDatos.token;
+    }
+    return "";
+  }
+
   obtenerDatosLocalStorage() {
     let datos = localStorage.getItem("sessionData");
     return datos;

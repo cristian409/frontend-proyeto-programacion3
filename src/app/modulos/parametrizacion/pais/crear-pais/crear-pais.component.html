@@ -1,1 +1,22 @@
-<p>crear-pais works!</p>
+<div class="row">
+    <fieldset>
+        <legend>Creacion de paises</legend>
+        <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="GuardarRegistro()">
+        <div class="row">
+            <div class="input-field col s12">
+            <input formControlName="pais" id="nombre_pais" type="text" class="validate">
+            <label for="nombre_pais">Pais</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+            <button [disabled]="obtenerFGV.pais.errors" class="waves-effect waves-light btn" type="submit" name="action">Crear
+              <i class="material-icons right">save</i>
+            </button>
+            &nbsp;
+            <a class="waves-effect red waves-light btn" routerLink="/parametros/listar-pais"><i class="material-icons left">cancel</i>Cancelar</a>
+            </div>
+        </div>
+        </form>
+    </fieldset>
+  </div>
