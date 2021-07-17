@@ -7,6 +7,7 @@ import { EditarClienteComponent } from './editar-cliente/editar-cliente.componen
 import { ListarClienteComponent } from './listar-cliente/listar-cliente.component';
 import { EliminarClienteComponent } from './eliminar-cliente/eliminar-cliente.component';
 import { FinancieraClienteComponent } from './financiera-cliente/financiera-cliente.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { FinancieraClienteComponent } from './financiera-cliente/financiera-clie
   ],
   imports: [
     CommonModule,
-    ClienteRoutingModule
+    ClienteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class ClienteModule { }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 
+
 const routes: Routes = [
   { 
     path:'inicio',
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'seguridad',
     loadChildren: () => import('./modulos/seguridad/seguridad.module').then(m => m.SeguridadModule)
+  },
+  {
+    path: 'clientes',
+    loadChildren: () => import('./modulos/cliente/cliente.module').then(m => m.ClienteModule)
   },
   { 
     path:'error-404',

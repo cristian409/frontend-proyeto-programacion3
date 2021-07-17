@@ -26,8 +26,9 @@
               </div>
             </div>
           </div>
-          <re-captcha [(ngModel)]="formModel.captcha" name="captcha" required
-            siteKey="{{recaptchaKey}}" #captchaControl="ngModel"></re-captcha><br>
+          <!-- <re-captcha [(ngModel)]="formModel.captcha" name="captcha" required
+            siteKey="{{recaptchaKey}}" #captchaControl="ngModel">
+          </re-captcha><br> -->
           <div class="row center-align">
             <button [disabled]="obtenerFGV.correo.errors || obtenerFGV.clave.errors"
               class="btn waves-effect waves-light" type="submit" name="action">Ingresar
@@ -37,5 +38,17 @@
         </form>
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="mensajeError" class="modal">
+  <div class="modal-content">
+    <h4 id="titulo"></h4>
+    <p id="mensaje"></p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-light red btn">Cerrar</a>
   </div>
 </div>

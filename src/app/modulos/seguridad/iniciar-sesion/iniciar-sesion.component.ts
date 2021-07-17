@@ -4,11 +4,9 @@ import { usuarioModelo } from 'src/app/modelos/usuario.modelo';
 import * as crypto from 'crypto-js'
 import { SeguridadService } from 'src/app/servicio/seguridad.service';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 
-export interface FormModel {
-  captcha?: String;
-};
+
+declare var abrirModalMensaje: any;
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
@@ -17,9 +15,6 @@ export interface FormModel {
 export class IniciarSesionComponent implements OnInit {
 
   fgValidacion: FormGroup = this.fb.group({});
-
-  formModel: FormModel = {};
-  recaptchaKey = environment.recaptchaKey;
 
   constructor(private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
@@ -52,8 +47,12 @@ export class IniciarSesionComponent implements OnInit {
         this.router.navigate(["/"]);
       },
       (error: any) => {
-        alert("Datos invalidos!");
+        this.abrirModal();
       }
     );
+  }
+
+  abrirModal(){
+    abrirModalMensaje("mensajeError", "¡Datos Invalidos!", "Error al Ingresar");
   }
 }

@@ -24,6 +24,15 @@ export class SeguridadService {
     }
   }
 
+  ObtenerToken() {
+    let datos = this.obtenerDatosLocalStorage();
+    if (datos) {
+      let objetoDatos: usuarioModelo = JSON.parse(datos);
+      return objetoDatos.token;
+    }
+    return "";
+  }
+
   obtenerDatosLocalStorage() {
     let datos = localStorage.getItem("sessionData");
     return datos;
@@ -66,9 +75,21 @@ export class SeguridadService {
     }
   }
 
-  cerrarSesion(){
+  cerrarSesion() {
     localStorage.removeItem("sessionData");
     this.refrescarDatosSession(new usuarioModelo());
   }
+
+  // identificarUsuario(usuario: usuarioModelo): Observable<any> {
+  //   return this.http.post<any>(`${this.url}/identificar`, {
+  //     correo: usuario.email,
+  //     clave: usuario.contraseña
+  //   }, {
+  //     headers: new HttpHeaders({
+
+  //     })
+  //   });
+  // }
+
 
 }
