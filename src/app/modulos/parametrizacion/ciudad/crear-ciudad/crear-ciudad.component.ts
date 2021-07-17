@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { PaisModelo } from 'src/app/modelos/pais.modelo';
+import { CiudadService } from 'src/app/servicio/ciudad.service';
+import { PaisService } from 'src/app/servicio/pais.service';
 
 @Component({
   selector: 'app-crear-ciudad',
@@ -7,9 +13,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearCiudadComponent implements OnInit {
 
-  constructor() { }
+  fgValidacion: FormGroup = this.fb.group({});
+  listaPaises: PaisModelo[] = []; 
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder,
+    private servicio: CiudadService,
+    private router: Router,
+    private servicioPais:PaisService) { }
+
+  construirFormulario() {
+    this.fgValidacion = this.fb.group({
+      nombre: ['', Validators.required],
+      paisId: ['', Validators.required]
+    });
   }
 
+  ngOnInit(): void {
+    this.construirFormulario();
+    this.servicioPais.listarRegistros().subscribe(
+      (datos) => {
+        this.listaPaises = datos;
+      },
+      (error) => {
+        alert("Error cargando los paises");
+      }
+    );
+  }
+
+  get obtenerFGV() {
+    return this.fgValidacion.controls;
+  }
+
+  GuardarRegistro(){
+    let nom = this.obtenerFGV.nombre.value;
+    let pId = this.obtenerFGV.paisId.value;
+    let obj = new CiudadModelo();
+    obj.nombre = nom;
+    obj.paisId = pId;
+    this.servicio.guardarRegistro(obj).subscribe(
+      (datos) => {
+        alert("ciudad almacenada correctamente");
+        this.router.navigate(["/parametros/listar-ciudades"]);
+      },
+      (error) => {
+        alert("Error guardando la ciudad");
+      }
+    );
+  }
 }

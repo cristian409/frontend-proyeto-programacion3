@@ -24,7 +24,7 @@ export class SeguridadService {
     }
   }
 
-  ObtenerToken() {
+  obtenerToken(){
     let datos = this.obtenerDatosLocalStorage();
     if (datos) {
       let objetoDatos: usuarioModelo = JSON.parse(datos);
