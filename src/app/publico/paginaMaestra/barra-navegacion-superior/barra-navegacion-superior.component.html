@@ -3,8 +3,10 @@
     <a routerLink="/" class="brand-logo">Logo</a>
     <a routerLink="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
+      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloques">Bloques</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Paises</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudades">Ciudades</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyectos">Proyectos</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
     </ul>
@@ -12,8 +14,10 @@
 </nav>
   
 <ul class="sidenav" id="mobile-demo">
+  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloques">Bloques</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Paises</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudades">Ciudades</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyectos">Proyectos</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
   <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
   <li><a routerLink="/iniciar-sesion">Iniciar Sesión</a></li>
