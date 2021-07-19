@@ -77,12 +77,13 @@ export class ClienteService {
   }
 
   BuscarRegistroFinanciera(id: Number): Observable<FinancieraModelo> {
-    return this.http.get<ClienteModelo>(`${this.url}/clientes/${id}`, {
+    return this.http.get<FinancieraModelo>(`${this.url}/financieras/${id}`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })
     });
   }
+
 
   GuardarRegistroFinanciera(modelo: FinancieraModelo): Observable<FinancieraModelo> {
     return this.http.post<FinancieraModelo>(`${this.url}/financieras`, {

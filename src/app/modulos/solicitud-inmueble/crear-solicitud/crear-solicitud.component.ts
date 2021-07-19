@@ -69,11 +69,11 @@ export class CrearSolicitudComponent implements OnInit {
   }
 
   GuardarRegistro() {
-    let fecha = this.obtenerFGV.nombre.value;
-    let inmuebleId = this.obtenerFGV.apellidos.value;
-    let clienteId = this.obtenerFGV.fechaNacimiento.value;
-    let oferta = this.obtenerFGV.telefono.value;
-    let estudio = this.obtenerFGV.direccion.value;
+    let fecha = this.obtenerFGV.fecha.value;
+    let inmuebleId = parseInt(this.obtenerFGV.inmuebleId.value);
+    let clienteId = parseInt(this.obtenerFGV.clienteId.value);
+    let oferta = this.obtenerFGV.oferta.value;
+    let estudio = this.obtenerFGV.estudio.value;
 
     let obj = new SolicitudModelo();
     obj.fecha = fecha;

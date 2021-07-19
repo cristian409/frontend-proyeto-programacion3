@@ -13,7 +13,7 @@ declare const abrirModal: any;
 export class FinancieraClienteComponent implements OnInit {
 
   fgValidacion: FormGroup = this.fb.group({});
-  id: Number = 0;
+  id: number = 0;
   constructor(private fb: FormBuilder,
     private router: Router,
     private servicioCliente: ClienteService,
@@ -39,16 +39,16 @@ export class FinancieraClienteComponent implements OnInit {
 
   buscarRegistro() {
     this.id = this.route.snapshot.params["id"];
-    this.servicioCliente.BuscarRegistro(this.id).subscribe(
+    this.servicioCliente.BuscarRegistroFinanciera(this.id).subscribe(
       (datos) => {
-        this.obtenerFGV.id.setValue(datos.id);
-        this.obtenerFGV.ingreso.setValue(datos.nombre);
-        this.obtenerFGV.nombre.setValue(datos.apellidos);
-        this.obtenerFGV.tiempoTrabajo.setValue(datos.fechaNacimiento);
-        this.obtenerFGV.nombreFamilia.setValue(datos.telefono);
-        this.obtenerFGV.telefonoFamilia.setValue(datos.direccion);
-        this.obtenerFGV.nombrePersonal.setValue(datos.email);
-        this.obtenerFGV.telefonoPersonal.setValue(datos.fotografia);
+        this.obtenerFGV.id.setValue(datos.clienteId);
+        this.obtenerFGV.ingreso.setValue(datos.totalIngresos);
+        this.obtenerFGV.nombre.setValue(datos.datosTrabajo);
+        this.obtenerFGV.tiempoTrabajo.setValue(datos.tiempoTabajoActual);
+        this.obtenerFGV.nombreFamilia.setValue(datos.nombreReferenciaFamiliar);
+        this.obtenerFGV.telefonoFamilia.setValue(datos.telefonoReferenciaFamiliar);
+        this.obtenerFGV.nombrePersonal.setValue(datos.nombreReferenciaPersonal);
+        this.obtenerFGV.telefonoPersonal.setValue(datos.telefonoReferenciaPersonal);
       },
       (error) => {
         abrirModal("¡Error!", "No se encuentran los datos");
@@ -71,7 +71,7 @@ export class FinancieraClienteComponent implements OnInit {
     let nombrePersonal = this.obtenerFGV.nombrePersonal.value;
     let telefonoPersonal = this.obtenerFGV.telefonoPersonal.value;
     let clienteId = this.id;
-
+    
     let obj = new FinancieraModelo();
     obj.totalIngresos = ingreso;
     obj.datosTrabajo = nombre;

@@ -1,11 +1,11 @@
 export class FinancieraModelo {
-    id?: Number;
-    totalIngresos?: Number;
+    id?: number;
+    totalIngresos?: number;
     datosTrabajo?: String;
     tiempoTabajoActual?: String;
     nombreReferenciaFamiliar?: String;
     telefonoReferenciaFamiliar?: String;
     nombreReferenciaPersonal?: String;
     telefonoReferenciaPersonal?: String;
-    clienteId?: Number;
+    clienteId?: number;
 }
