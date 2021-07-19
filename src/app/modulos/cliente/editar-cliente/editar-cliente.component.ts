@@ -107,7 +107,7 @@ export class EditarClienteComponent implements OnInit {
         obj.email = correo;
         obj.ciudadId = ciudadId;
         
-        this.servicioCliente.GuardarRegistro(obj).subscribe(
+        this.servicioCliente.AutualizarRegistro(obj).subscribe(
           (datos) => {
             abrirModal('Información', 'Registro almacenado correctamente.');
             this.router.navigate(["/clientes/listar-clientes"]);
