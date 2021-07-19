@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { datosGenerales } from '../config/datos.generales';
+import { CargaArchivoModel } from '../modelos/carga.archivo.modelo';
 import { ProyectoModelo } from '../modelos/proyecto.modelo';
 import { SeguridadService } from './seguridad.service';
 
@@ -71,6 +72,14 @@ export class ProyectoService {
     return this.http.delete<any>(`${this.url}/proyectos/${modelo.codigo}`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  GuardarImagen(formData: FormData): Observable<CargaArchivoModel> {
+    return this.http.post<CargaArchivoModel>(`${this.url}/CargarImagenProyecto`,  formData, {
+      headers: new HttpHeaders({
+       
       })
     });
   }

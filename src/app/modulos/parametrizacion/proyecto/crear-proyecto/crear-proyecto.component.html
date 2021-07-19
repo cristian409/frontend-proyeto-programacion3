@@ -1,49 +1,44 @@
 <div class="row">
-    <fieldset>
-        <legend>Creacion de proyectos</legend>
-        <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="GuardarRegistro()">
-            <div class="row">
-                <div class="input-field col s3">
-                    <input formControlName="nombre" id="nombre_proyecto" type="text" class="validate">
-                    <label for="nombre_proyecto">Nombre proyecto</label>
-                </div>
-                <div class="input-field col s9">
-                    <input formControlName="descripcion" id="descripcion_proyecto" type="text" class="validate">
-                    <label for="descripcion_proyecto">Descripcion</label>
-                </div>
-                <!--   SUBIDA DE IMAGEN EN PROCESO
-                <div class="file-field input-field col s6">
-                    <div class="btn">
-                        <span>subir foto</span>
-                        <input type="file">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" formControlName="imagen" value>
-                    </div>
-                </div>
-                -->
-                <div class="input-field col s6">
-                    <input formControlName="imagen" id="imagen_proyecto" type="text" class="validate" value="Aqui va la Imagen">
-                    <label for="imagen_proyecto">Imagen</label>
-                </div>
-                <div class="input-field col s6">
-                    <label class="active">Ciudades</label>
-                    <select formControlName="ciudadId" class="browser-default">
-                        <option *ngFor="let c of listaCiudades" value="{{c.codigo}}">{{c.nombre}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <button [disabled]="obtenerFGV.nombre.errors" class="waves-effect waves-light btn" type="submit"
-                        name="action">Crear
-                        <i class="material-icons right">save</i>
-                    </button>
-                    &nbsp;
-                    <a class="waves-effect red waves-light btn" routerLink="/parametros/listar-proyectos"><i
-                            class="material-icons left">cancel</i>Cancelar</a>
-                </div>
-            </div>
-        </form>
-    </fieldset>
+  <fieldset>
+    <legend>Creacion de proyectos</legend>
+    <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="GuardarRegistro()">
+      <div class="row">
+        <div class="input-field col s3">
+          <input formControlName="nombre" id="nombre_proyecto" type="text" class="validate">
+          <label for="nombre_proyecto">Nombre proyecto</label>
+        </div>
+        <div class="input-field col s9">
+          <input formControlName="descripcion" id="descripcion_proyecto" type="text" class="validate">
+          <label for="descripcion_proyecto">Descripcion</label>
+        </div>
+        <div class="file-field input-field">
+          <div class="btn">
+            <i class="medium material-icons">camera</i>
+            <input type="file" (change)="archivoSeleccionado($event)">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Subir Foto">
+          </div>
+        </div>
+        <input hidden formControlName="foto" type="text"/>
+        <div class="input-field col s6">
+          <label class="active">Ciudades</label>
+          <select formControlName="ciudadId" class="browser-default">
+            <option *ngFor="let c of listaCiudades" value="{{c.codigo}}">{{c.nombre}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <button [disabled]="obtenerFGV.nombre.errors" class="waves-effect waves-light btn" type="submit"
+            name="action">Crear
+            <i class="material-icons right">save</i>
+          </button>
+          &nbsp;
+          <a class="waves-effect red waves-light btn" routerLink="/parametros/listar-proyectos"><i
+              class="material-icons left">cancel</i>Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </fieldset>
 </div>
