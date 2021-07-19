@@ -68,7 +68,7 @@ export class EditarInmuebleComponent implements OnInit {
   }
 
   GuardarRegistro() {
-    let ide = parseInt(this.obtenerFGV.identificador.value);
+    let ide = this.obtenerFGV.identificador.value;
     let val = parseInt(this.obtenerFGV.valor.value);
     let bId = this.obtenerFGV.bloqueId.value;
     let codigo = this.obtenerFGV.codigo.value;

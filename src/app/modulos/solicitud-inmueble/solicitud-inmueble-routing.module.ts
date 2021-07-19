@@ -1,7 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CrearSolicitudComponent } from './crear-solicitud/crear-solicitud.component';
+import { ListarSolicitudComponent } from './listar-solicitud/listar-solicitud.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'crear-solicitud',
+    component: CrearSolicitudComponent
+  },
+  {
+    path: 'listar-solicitud',
+    component: ListarSolicitudComponent
+  },
+  {
+    path: 'editar-solicitud/:id',
+    component: ListarSolicitudComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

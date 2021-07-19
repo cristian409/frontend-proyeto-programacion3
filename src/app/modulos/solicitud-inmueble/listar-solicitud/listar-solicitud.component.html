@@ -1,1 +1,54 @@
-<p>listar-solicitud works!</p>
+<br>
+<a class="waves-effect waves-light btn" routerLink="/solicitud/crear-solicitud"><i
+    class="material-icons left">add</i>Agregar Solicitud</a>
+<table class="table responsive-table highlight">
+  <thead>
+    <th>Codigo</th>
+    <th>Fecha Solicitud</th>
+    <th>Oferta Economica</th>
+    <th>Inmueble</th>
+    <th>Cliente</th>
+    <th>Estado</th>
+    <th>Opciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of listaRegistros | paginate:{ itemsPerPage: 4, currentPage: pagina}">
+      <td>{{p.id}}</td>
+      <td>{{p.fecha}}</td>
+      <td>{{p.ofertaEconomica}}</td>
+      <td>{{p.inmuebleId}}</td>
+      <td>{{p.clienteId}}</td>
+      <td>{{p.estado}}</td>
+      <td>
+        <a class="btn-floating waves-effect orange waves-light btn-small"
+          routerLink="/solicitud/editar-solicitud/{{p.id}}">
+          <i class="material-icons small left">edit</i>
+        </a>
+        &nbsp;
+        <button class="btn-floating waves-effect red waves-light btn-small" type="button"
+          (click)="verificarEliminacion()" name="action">
+          <i class="material-icons samll right">delete</i>
+        </button>
+      </td>
+
+      <!-- Modal Structure -->
+      <div id="confimacionModal" class="modal">
+        <div class="modal-content">
+          <h4 id="tituloModal1"></h4>
+          <p id="textoModal1"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="waves-effect green waves-light btn" type="button" (click)="Eliminacion(p.id)">
+            Confirmar<i class="material-icons right">check</i>
+          </button>
+          &nbsp;
+          &nbsp;
+          <a class="modal-close waves-effect waves-light red btn"><i class="material-icons right">close</i>Cerrar</a>
+        </div>
+      </div>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="pagina = $event" previousLabel="Anterior" nextLabel="Siguiente"
+  screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+</pagination-controls>

@@ -2,7 +2,7 @@
   <fieldset>
     <legend> Información Financiera </legend>
     <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="GuardarRegistroFinanciera()">
-      <input formControlName="id">
+      <input type="hidden" formControlName="id">
       <div class="row">
         <div class="input-field col s4">
           <i class="small material-icons prefix">attach_money</i>

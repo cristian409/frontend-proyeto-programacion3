@@ -24,7 +24,7 @@ export class ListarInmuebleComponent implements OnInit {
     );
   }
 
-  verificarEliminacion(codigo?: number, identificador?: number) {
+  verificarEliminacion(codigo?: Number, identificador?: String) {
     if (window.confirm("confirme que desea eliminar el inmueble " + identificador)) {
       let modelo = new InmuebleModelo();
       modelo.codigo = codigo;

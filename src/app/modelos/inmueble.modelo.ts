@@ -1,6 +1,6 @@
 export class InmuebleModelo {
-    codigo?: number;
-    identificador?: number;
-    valor?:number;
-    bloqueId?:number;
+    codigo?: Number;
+    identificador?: String;
+    valor?:Number;
+    bloqueId?:Number;
 }

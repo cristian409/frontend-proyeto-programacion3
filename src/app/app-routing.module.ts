@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'clientes',
     loadChildren: () => import('./modulos/cliente/cliente.module').then(m => m.ClienteModule)
   },
+  {
+    path: 'solicitud',
+    loadChildren: () => import('./modulos/solicitud-inmueble/solicitud-inmueble.module').then(m => m.SolicitudInmuebleModule)
+  },
   { 
     path:'error-404',
     component: Error404Component
