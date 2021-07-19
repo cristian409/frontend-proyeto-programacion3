@@ -1,1 +1,31 @@
-<p>listar-inmueble works!</p>
+<br>
+<a class="waves-effect waves-light btn" routerLink="/parametros/crear-inmuebles"><i
+        class="material-icons left">add</i>Agregar Inmueble</a>
+<table class="table table-responsive">
+    <thead>
+        <th>Codigo</th>
+        <th>identificador</th>
+        <th>valor</th>
+        <th>Opciones</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of listaRegistros | paginate:{ itemsPerPage: 4, currentPage: pagina}">
+            <td>{{i.codigo}}</td>
+            <td>{{i.identificador}}</td>
+            <td>{{i.valor}}</td>
+            <td>
+                <a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-inmuebles/{{i.codigo}}">
+                    <i class="material-icons left">edit</i>Editar inmueble
+                </a>
+                &nbsp;
+                <button class="waves-effect red waves-light btn" type="button"
+                    (click)="verificarEliminacion(i.codigo, i.identificador)" name="action">
+                    Eliminar inmueble<i class="material-icons right">delete</i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pagina = $event" previousLabel="Anterior" nextLabel="Siguiente"
+    screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+</pagination-controls>

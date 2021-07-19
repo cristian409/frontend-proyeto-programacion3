@@ -33,10 +33,10 @@ export class EditarBloqueComponent implements OnInit {
 
   ngOnInit(): void {
     this.construirFormulario();
-    this.cargarCiudades();
+    this.cargarProyectos();
   }
 
-  cargarCiudades() {
+  cargarProyectos() {
     this.servicioProyecto.listarRegistros().subscribe(
       (datos) => {
         this.listaProyectos = datos;

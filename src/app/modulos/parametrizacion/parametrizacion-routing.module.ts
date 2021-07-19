@@ -6,6 +6,9 @@ import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.comp
 import { CrearCiudadComponent } from './ciudad/crear-ciudad/crear-ciudad.component';
 import { EditarCiudadComponent } from './ciudad/editar-ciudad/editar-ciudad.component';
 import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';
+import { CrearInmuebleComponent } from './inmueble/crear-inmueble/crear-inmueble.component';
+import { EditarInmuebleComponent } from './inmueble/editar-inmueble/editar-inmueble.component';
+import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
 import { CrearPaisComponent } from './pais/crear-pais/crear-pais.component';
 import { EditarPaisComponent } from './pais/editar-pais/editar-pais.component';
 import { ListarPaisComponent } from './pais/listar-pais/listar-pais.component';
@@ -61,6 +64,18 @@ const routes: Routes = [
   {
     path: 'editar-bloques/:codigo',
     component: EditarBloqueComponent
+  },
+  {
+    path: 'crear-inmuebles',
+    component: CrearInmuebleComponent
+  },
+  {
+    path: 'listar-inmuebles',
+    component: ListarInmuebleComponent
+  },
+  {
+    path: 'editar-inmuebles/:codigo',
+    component: EditarInmuebleComponent
   }
 ];
 
