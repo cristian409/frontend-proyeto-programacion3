@@ -1,1 +1,34 @@
-<p>crear-inmueble works!</p>
+<div class="row">
+    <fieldset>
+        <legend>Creacion de bloques</legend>
+        <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="GuardarRegistro()">
+            <div class="row">
+                <div class="input-field col s4">
+                    <input formControlName="identificador" id="identificar_inmueble" type="text" class="validate">
+                    <label for="identificar_inmueble">identificador inmueble</label>
+                </div>
+                <div class="input-field col s4">
+                    <input formControlName="valor" id="valor_inmueble" type="text" class="validate">
+                    <label for="valor_inmueble">Valor del inmueble</label>
+                </div>
+                <div class="input-field col s4">
+                    <label class="active">Bloques</label>
+                    <select formControlName="bloqueId" class="browser-default">
+                        <option *ngFor="let b of listaBloques" value="{{b.codigo}}">{{b.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <button [disabled]="obtenerFGV.identificador.errors" class="waves-effect waves-light btn" type="submit"
+                        name="action">Crear
+                        <i class="material-icons right">save</i>
+                    </button>
+                    &nbsp;
+                    <a class="waves-effect red waves-light btn" routerLink="/parametros/listar-inmuebles"><i
+                            class="material-icons left">cancel</i>Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>

@@ -1,1 +1,31 @@
-<p>listar-bloque works!</p>
+<br>
+<a class="waves-effect waves-light btn" routerLink="/parametros/crear-bloques"><i
+        class="material-icons left">add</i>Agregar Bloque</a>
+<table class="table table-responsive">
+    <thead>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Opciones</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let b of listaRegistros | paginate:{ itemsPerPage: 4, currentPage: pagina}">
+            <td>{{b.codigo}}</td>
+            <td>{{b.nombre}}</td>
+            <td>{{b.descripcion}}</td>
+            <td>
+                <a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-bloques/{{b.codigo}}">
+                    <i class="material-icons left">edit</i>Editar bloque
+                </a>
+                &nbsp;
+                <button class="waves-effect red waves-light btn" type="button"
+                    (click)="verificarEliminacion(b.codigo, b.nombre)" name="action">
+                    Eliminar bloque<i class="material-icons right">delete</i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pagina = $event" previousLabel="Anterior" nextLabel="Siguiente"
+    screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+</pagination-controls>
