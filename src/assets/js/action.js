@@ -1,15 +1,16 @@
-function abrirModalMensaje(id, titulo, mensaje) {
-    abrirModal(id, titulo, mensaje);
+let confirmarModal = (titulo, mensaje) => {
+    document.querySelector(`#tituloModal1`).innerHTML = titulo;
+    document.querySelector(`#textoModal1`).innerHTML = mensaje;
+    var elemento = document.querySelector(`#confimacionModal`);
+    let instance = M.Modal.init(elemento, {});
+    instance.open();
 }
 
-function modalConfirmacion(id, titulo, mensaje) {
-    abrirModal(id, titulo, mensaje);
-}
 
-let abrirModal = (modalId, titulo, mensaje) => {
-    document.querySelector(`#titulo`).innerHTML = titulo;
-    document.querySelector(`#mensaje`).innerHTML = mensaje;
-    var elemento = document.querySelector(`#${modalId}`);
+let abrirModal = (titulo, mensaje) => {
+    document.querySelector(`#tituloModal`).innerHTML = titulo;
+    document.querySelector(`#textoModal`).innerHTML = mensaje;
+    var elemento = document.querySelector(`#mensajeModal`);
     let instance = M.Modal.init(elemento, {});
     instance.open();
 }

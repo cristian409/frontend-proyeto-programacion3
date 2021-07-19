@@ -8,6 +8,7 @@ import { ListarClienteComponent } from './listar-cliente/listar-cliente.componen
 import { EliminarClienteComponent } from './eliminar-cliente/eliminar-cliente.component';
 import { FinancieraClienteComponent } from './financiera-cliente/financiera-cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ClienteRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class ClienteModule { }

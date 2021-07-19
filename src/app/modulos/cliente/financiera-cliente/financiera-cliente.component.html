@@ -1,1 +1,65 @@
-<p>financiera-cliente works!</p>
+<div class="row">
+  <fieldset>
+    <legend> Información Financiera </legend>
+    <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="GuardarRegistroFinanciera()">
+      <input formControlName="id">
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="small material-icons prefix">attach_money</i>
+          <input formControlName="ingreso" id="ingreso" type="number" class="validate">
+          <label for="ingreso">Total Ingresos</label>
+        </div>
+        <div class="input-field col s4">
+          <i class="small material-icons prefix">business</i>
+          <input formControlName="nombre" id="nombre" type="text" class="validate">
+          <label for="nombre">Nombre Empresa</label>
+        </div>
+        <div class="input-field col s4">
+          <i class="small material-icons prefix">date_range</i>
+          <input formControlName="tiempoTrabajo" id="tiempoTrabajo" type="text" class="validate">
+          <label for="tiempoTrabajo">Tiempo Trabajo actual</label>
+        </div>
+      </div>
+      <legend> Referencia Familiar </legend>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="small material-icons prefix">account_circle</i>
+          <input formControlName="nombreFamilia" id="nombreFamilia" type="text" class="validate">
+          <label for="nombreFamilia">Nombre Referencia</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="small material-icons prefix">phone</i>
+          <input formControlName="telefonoFamilia" id="telefonoFamilia" type="text" class="validate">
+          <label for="telefonoFamilia">Telefono Referencia</label>
+        </div>
+      </div>
+      <legend> Referencia Personal </legend>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="small material-icons prefix">account_circle</i>
+          <input formControlName="nombrePersonal" id="nombrePersonal" type="text" class="validate">
+          <label for="nombrePersonal">Nombre Referencia</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="small material-icons prefix">phone</i>
+          <input formControlName="telefonoPersonal" id="telefonoPersonal" type="text" class="validate">
+          <label for="telefonoPersonal">Telefono Referencia</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <button
+            [disabled]="obtenerFGV.ingreso.errors || obtenerFGV.nombre.errors || 
+              obtenerFGV.tiempoTrabajo.errors || obtenerFGV.nombreFamilia.errors || 
+              obtenerFGV.telefonoFamilia.errors || obtenerFGV.nombrePersonal.errors || obtenerFGV.telefonoPersonal.errors"
+            class="btn waves-effect waves-light" type="submit" name="action">Guardar
+            <i class="material-icons right">save</i>
+          </button>
+          &nbsp;
+          &nbsp;
+          <a class="waves-effect waves-light btn red" routerLink="/clientes/listar-clientes"><i class="material-icons left">cancel</i>Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</div>

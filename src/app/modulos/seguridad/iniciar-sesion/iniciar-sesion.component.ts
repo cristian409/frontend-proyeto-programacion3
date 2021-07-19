@@ -6,7 +6,7 @@ import { SeguridadService } from 'src/app/servicio/seguridad.service';
 import { Router } from '@angular/router';
 
 
-declare var abrirModalMensaje: any;
+declare const abrirModal: any;
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
@@ -47,12 +47,8 @@ export class IniciarSesionComponent implements OnInit {
         this.router.navigate(["/"]);
       },
       (error: any) => {
-        this.abrirModal();
+        abrirModal("¡Datos Invalidos!", error.error.error.message);
       }
     );
-  }
-
-  abrirModal(){
-    abrirModalMensaje("mensajeError", "¡Datos Invalidos!", "Error al Ingresar");
   }
 }

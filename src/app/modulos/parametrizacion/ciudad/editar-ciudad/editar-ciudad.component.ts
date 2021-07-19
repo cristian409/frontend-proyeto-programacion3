@@ -6,6 +6,9 @@ import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicio/ciudad.service';
 import { PaisService } from 'src/app/servicio/pais.service';
 
+
+declare const abrirModal: any;
+declare const confirmarModal: any;
 @Component({
   selector: 'app-editar-ciudad',
   templateUrl: './editar-ciudad.component.html',
@@ -44,7 +47,8 @@ export class EditarCiudadComponent implements OnInit {
         this.buscarRegistro();
       },
       (error) => {
-        alert("Error cargando los paises");
+        abrirModal("!Error¡", "Error cargando los paises");
+
       }
     );
   }
@@ -58,7 +62,7 @@ export class EditarCiudadComponent implements OnInit {
         this.obtenerFGV.paisId.setValue(datos.paisId);
       },
       (error) => {
-        alert("no se encuentran los datos");
+        abrirModal("¡Error!", "No se encuentran los datos");
       }
     );
   }
@@ -77,11 +81,11 @@ export class EditarCiudadComponent implements OnInit {
     obj.paisId = pId;
     this.servicio.actualizarRegistro(obj).subscribe(
       (datos) => {
-        alert("ciudad almacenada correctamente");
+        abrirModal("Información", "Ciudad almacenada correctamente");
         this.router.navigate(["/parametros/listar-ciudades"]);
       },
       (error) => {
-        alert("Error guardando la ciudad");
+        abrirModal("¡Error!", "Error guardando la ciudad");
       }
     );
   }

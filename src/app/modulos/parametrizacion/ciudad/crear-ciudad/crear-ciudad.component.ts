@@ -6,6 +6,7 @@ import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicio/ciudad.service';
 import { PaisService } from 'src/app/servicio/pais.service';
 
+declare const abrirModal: any;
 @Component({
   selector: 'app-crear-ciudad',
   templateUrl: './crear-ciudad.component.html',
@@ -14,12 +15,12 @@ import { PaisService } from 'src/app/servicio/pais.service';
 export class CrearCiudadComponent implements OnInit {
 
   fgValidacion: FormGroup = this.fb.group({});
-  listaPaises: PaisModelo[] = []; 
+  listaPaises: PaisModelo[] = [];
 
   constructor(private fb: FormBuilder,
     private servicio: CiudadService,
     private router: Router,
-    private servicioPais:PaisService) { }
+    private servicioPais: PaisService) { }
 
   construirFormulario() {
     this.fgValidacion = this.fb.group({
@@ -30,21 +31,25 @@ export class CrearCiudadComponent implements OnInit {
 
   ngOnInit(): void {
     this.construirFormulario();
-    this.servicioPais.listarRegistros().subscribe(
-      (datos) => {
-        this.listaPaises = datos;
-      },
-      (error) => {
-        alert("Error cargando los paises");
-      }
-    );
+    this.ListarPaises();
   }
 
   get obtenerFGV() {
     return this.fgValidacion.controls;
   }
 
-  GuardarRegistro(){
+  ListarPaises() {
+    this.servicioPais.listarRegistros().subscribe(
+      (datos) => {
+        this.listaPaises = datos;
+      },
+      (error) => {
+        abrirModal("¡Error!", "Error cargando los paises");
+      }
+    );
+  }
+
+  GuardarRegistro() {
     let nom = this.obtenerFGV.nombre.value;
     let pId = this.obtenerFGV.paisId.value;
     let obj = new CiudadModelo();
@@ -52,11 +57,11 @@ export class CrearCiudadComponent implements OnInit {
     obj.paisId = pId;
     this.servicio.guardarRegistro(obj).subscribe(
       (datos) => {
-        alert("ciudad almacenada correctamente");
+        abrirModal("Información", "ciudad almacenada correctamente");
         this.router.navigate(["/parametros/listar-ciudades"]);
       },
       (error) => {
-        alert("Error guardando la ciudad");
+        abrirModal("¡Datos Invalidos!", "Error al guardar el registro");
       }
     );
   }

@@ -9,6 +9,7 @@ import { PiePaginaComponent } from './publico/paginaMaestra/pie-pagina/pie-pagin
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

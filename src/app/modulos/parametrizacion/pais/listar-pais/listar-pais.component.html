@@ -1,31 +1,45 @@
 <br>
-<a class="waves-effect waves-light btn" routerLink="/parametros/crear-pais"><i class="material-icons left">add</i>Agregar Pais</a>
-<table class="table table-responsive">
-    <thead>
-        <th>Codigo</th>
-        <th>Nombre</th>
-        <th>Opciones</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of listaRegistros | paginate:{ itemsPerPage: 4, currentPage: pagina}">
-            <td>{{p.codigo}}</td>
-            <td>{{p.nombre}}</td>
-            <td>
-                <a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-pais/{{p.codigo}}">
-                    <i class="material-icons left">edit</i>Editar Pais
-                </a>
-                &nbsp;
-                <button class="waves-effect red waves-light btn" type="button"(click)="verificarEliminacion(p.codigo, p.nombre)"name="action">
-                    Eliminar pais<i class="material-icons right">delete</i>
-                </button>
-            </td>
-        </tr>
-    </tbody>
+<a class="waves-effect waves-light btn" routerLink="/parametros/crear-pais"><i
+    class="material-icons left">add</i>Agregar Pais</a>
+<table class="table responsive-table highlight">
+  <thead>
+    <th>Codigo</th>
+    <th>Nombre</th>
+    <th>Opciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of listaRegistros | paginate:{ itemsPerPage: 4, currentPage: pagina}">
+      <td>{{p.codigo}}</td>
+      <td>{{p.nombre}}</td>
+      <td>
+        <a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-pais/{{p.codigo}}">
+          <i class="material-icons left">edit</i>Editar Pais
+        </a>
+        &nbsp;
+        <button class="waves-effect red waves-light btn" type="button" (click)="verificarEliminacion()">
+          Eliminar pais<i class="material-icons right">delete</i>
+        </button>
+      </td>
+
+      <!-- Modal Structure -->
+      <div id="confimacionModal" class="modal">
+        <div class="modal-content">
+          <h4 id="tituloModal1"></h4>
+          <p id="textoModal1"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="waves-effect green waves-light btn" type="button" (click)="Eliminacion(p.codigo, p.nombre)">
+            Confirmar<i class="material-icons right">check</i>
+          </button>
+          &nbsp;
+          &nbsp;
+          <a class="modal-close waves-effect waves-light red btn"><i class="material-icons right">close</i>Cerrar</a>
+        </div>
+      </div>
+
+    </tr>
+  </tbody>
 </table>
-<pagination-controls (pageChange)="pagina = $event"
-    previousLabel="Anterior"
-    nextLabel="Siguiente"
-    screenReaderPaginationLabel="Pagination"
-    screenReaderPageLabel="page"
-    screenReaderCurrentLabel="You're on page">
+<pagination-controls (pageChange)="pagina = $event" previousLabel="Anterior" nextLabel="Siguiente"
+  screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
 </pagination-controls>

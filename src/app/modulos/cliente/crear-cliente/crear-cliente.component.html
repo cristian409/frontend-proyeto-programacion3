@@ -36,20 +36,24 @@
           <input formControlName="correo" id="email" type="email" class="validate">
           <label for="email">Correo</label>
         </div>
-        <label>Browser Select</label>
-        <select formControlName="ciudadId"  class="browser-default">
-          <option *ngFor="let c of ciudadListado" value="c.id">{{c.nombre}}</option>
-        </select>
+        <div class="input-field col s6">
+          <select formControlName="ciudadId" class="browser-default">
+            <option value="" disabled selected>Escoja una Ciudad</option>
+            <option *ngFor="let c of ciudadListado" value="{{c.codigo}}">{{c.nombre}}</option>
+          </select>
+          <label class="active">Ciudades</label>
+        </div>
       </div>
       <div class="file-field input-field">
         <div class="btn">
           <i class="medium material-icons">camera</i>
-          <input formControlName="fotografia" type="file">
+          <input type="file" (change)="archivoSeleccionado($event)">
         </div>
         <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
+          <input class="file-path validate" type="text" placeholder="Fotografía">
         </div>
       </div>
+      <input hidden formControlName="fotografia" type="text"/>
       <div class="row">
         <div class="col s12">
           <button [disabled]="obtenerFGV.nombre.errors || obtenerFGV.apellidos.errors || 
@@ -67,25 +71,3 @@
   </fieldset>
 </div>
 
-<!-- Modal Structure -->
-<div id="mensajeExito" class="modal">
-  <div class="modal-content">
-    <h4 id="titulo"></h4>
-    <p id="mensaje"></p>
-  </div>
-  <div class="modal-footer">
-    <a class="modal-close waves-effect waves-light red btn">Cerrar</a>
-  </div>
-</div>
-
-
-<!-- Modal Structure -->
-<div id="mensajeError" class="modal">
-  <div class="modal-content">
-    <h4 id="titulo"></h4>
-    <p id="mensaje"></p>
-  </div>
-  <div class="modal-footer">
-    <a class="modal-close waves-effect waves-light red btn">Cerrar</a>
-  </div>
-</div>

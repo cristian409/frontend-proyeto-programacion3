@@ -25,6 +25,9 @@
                 <strong>Este campo es requerido!</strong>
               </div>
             </div>
+            <label class="right">
+              <a class='blue-text' routerLink="/seguridad/resetear-clave"><b>Olvido su Contraseña?</b></a>
+            </label>
           </div>
           <!-- <re-captcha [(ngModel)]="formModel.captcha" name="captcha" required
             siteKey="{{recaptchaKey}}" #captchaControl="ngModel">
@@ -36,19 +39,13 @@
             </button>
           </div>
         </form>
+        <!-- <label class="olvidar">
+          <a class='blue-text' routerLink="seguridad/resetear-clave"><b>Registrarse</b></a>
+        </label> -->
       </div>
     </div>
   </div>
 </div>
 
 
-<!-- Modal Structure -->
-<div id="mensajeError" class="modal">
-  <div class="modal-content">
-    <h4 id="titulo"></h4>
-    <p id="mensaje"></p>
-  </div>
-  <div class="modal-footer">
-    <a class="modal-close waves-effect waves-light red btn">Cerrar</a>
-  </div>
-</div>
+

@@ -2,7 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { datosGenerales } from '../config/datos.generales';
+import { CargaArchivoModel } from '../modelos/carga.archivo.modelo';
 import { ClienteModelo } from '../modelos/cliente.modelo';
+import { FinancieraModelo } from '../modelos/financiera.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
@@ -13,7 +15,7 @@ export class ClienteService {
   token?: String = "";
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.ObtenerToken();
+    this.token = servicioSeguridad.obtenerToken();
 
   }
 
@@ -41,10 +43,19 @@ export class ClienteService {
       fotografia: modelo.fotografia,
       email: modelo.email,
       telefono: modelo.telefono,
-      direccion: modelo.direccion
+      direccion: modelo.direccion,
+      ciudadId: modelo.ciudadId
     }, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  GuardarImagen(formData: FormData): Observable<CargaArchivoModel> {
+    return this.http.post<CargaArchivoModel>(`${this.url}/CargarImagenProyecto`,  formData, {
+      headers: new HttpHeaders({
+       
       })
     });
   }
@@ -63,6 +74,31 @@ export class ClienteService {
         "Authorization": `Bearer ${this.token}`
       })
     });
+  }
+
+  BuscarRegistroFinanciera(id: Number): Observable<FinancieraModelo> {
+    return this.http.get<ClienteModelo>(`${this.url}/clientes/${id}`, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  GuardarRegistroFinanciera(modelo: FinancieraModelo): Observable<FinancieraModelo> {
+    return this.http.post<FinancieraModelo>(`${this.url}/financieras`, {
+      totalIngresos: modelo.totalIngresos,
+      datosTrabajo: modelo.datosTrabajo,
+      tiempoTabajoActual: modelo.tiempoTabajoActual,
+      nombreReferenciaFamiliar: modelo.nombreReferenciaFamiliar,
+      telefonoReferenciaFamiliar: modelo.telefonoReferenciaFamiliar,
+      nombreReferenciaPersonal: modelo.nombreReferenciaPersonal,
+      telefonoReferenciaPersonal: modelo.telefonoReferenciaPersonal,
+      clienteId: modelo.clienteId
+    }, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });   
   }
 
 

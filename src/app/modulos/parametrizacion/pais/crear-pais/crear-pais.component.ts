@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { PaisService } from 'src/app/servicio/pais.service';
 
+declare const abrirModal: any;
 @Component({
   selector: 'app-crear-pais',
   templateUrl: './crear-pais.component.html',
@@ -37,11 +38,11 @@ export class CrearPaisComponent implements OnInit {
     obj.nombre = nom;
     this.servicio.guardarRegistro(obj).subscribe(
       (datos) => {
-        alert("Pais almacenado correctamente");
+        abrirModal("Información", "Pais almacenado correctamente");
         this.router.navigate(["/parametros/listar-pais"]);
       },
       (error) => {
-        alert("Error guardando el pais");
+        abrirModal("¡Error!", error.error.error.message);
       }
     );
   }

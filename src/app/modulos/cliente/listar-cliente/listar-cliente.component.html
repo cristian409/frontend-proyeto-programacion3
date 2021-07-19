@@ -1,1 +1,57 @@
-<p>listar-cliente works!</p>
+<br>
+<a class="waves-effect waves-light btn" routerLink="/clientes/crear-clientes"><i
+    class="material-icons left">add</i>Agregar Cliente</a>
+<table class="table responsive-table highlight">
+  <thead>
+    <th>Codigo</th>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Telefono</th>
+    <th>Dirección</th>
+    <th>Correo</th>
+    <th>Opciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of listaRegistros | paginate:{ itemsPerPage: 4, currentPage: pagina}">
+      <td>{{p.id}}</td>
+      <td>{{p.nombre}}</td>
+      <td>{{p.apellidos}}</td>
+      <td>{{p.telefono}}</td>
+      <td>{{p.direccion}}</td>
+      <td>{{p.email}}</td>
+      <td>
+        <a class="btn-floating waves-effect orange waves-light btn-small" routerLink="/clientes/editar-clientes/{{p.id}}">
+          <i class="material-icons small left">edit</i>
+        </a>
+        &nbsp;
+        <a class="btn-floating waves-effect green waves-light btn-small" routerLink="/clientes/financiera-clientes/{{p.id}}">
+            <i class="material-icons small left">info</i> 
+          </a>
+          &nbsp;
+        <button class="btn-floating waves-effect red waves-light btn-small" type="button"
+          (click)="verificarEliminacion()" name="action">
+          <i class="material-icons samll right">delete</i>
+        </button>
+      </td>
+
+      <!-- Modal Structure -->
+      <div id="confimacionModal" class="modal">
+        <div class="modal-content">
+          <h4 id="tituloModal1"></h4>
+          <p id="textoModal1"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="waves-effect green waves-light btn" type="button" (click)="Eliminacion(p.id, p.nombre)">
+            Confirmar<i class="material-icons right">check</i>
+          </button>
+          &nbsp;
+          &nbsp;
+          <a class="modal-close waves-effect waves-light red btn"><i class="material-icons right">close</i>Cerrar</a>
+        </div>
+      </div>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="pagina = $event" previousLabel="Anterior" nextLabel="Siguiente"
+  screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+</pagination-controls>

@@ -1,6 +1,6 @@
 export class CiudadModelo {
-    codigo?: number;
+    codigo?: Number;
     nombre?: String;
-    paisId?:number;
+    paisId?: Number;
     paisNombre?:String;
 }
