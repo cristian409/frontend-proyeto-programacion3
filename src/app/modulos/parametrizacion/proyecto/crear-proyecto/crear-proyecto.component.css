@@ -1,0 +1,9 @@
+fieldset{
+    margin: 10px;
+}
+
+legend{
+    font-size: 20px;
+    color: gray;
+    font-weight: bold;
+}

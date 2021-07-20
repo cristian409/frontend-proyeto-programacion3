@@ -96,7 +96,7 @@ export class EditarClienteComponent implements OnInit {
       (datos) => {
         this.obtenerFGV.fotografia.setValue(datos.filename)
         let fotografia = this.obtenerFGV.fotografia.value;
-        
+
         let obj = new ClienteModelo();
         obj.nombre = nombre;
         obj.apellidos = apellidos;
@@ -106,7 +106,7 @@ export class EditarClienteComponent implements OnInit {
         obj.direccion = direccion;
         obj.email = correo;
         obj.ciudadId = ciudadId;
-        
+
         this.servicioCliente.AutualizarRegistro(obj).subscribe(
           (datos) => {
             abrirModal('Información', 'Registro almacenado correctamente.');

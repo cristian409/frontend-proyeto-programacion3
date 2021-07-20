@@ -53,9 +53,9 @@ export class ClienteService {
   }
 
   GuardarImagen(formData: FormData): Observable<CargaArchivoModel> {
-    return this.http.post<CargaArchivoModel>(`${this.url}/CargarImagenProyecto`,  formData, {
+    return this.http.post<CargaArchivoModel>(`${this.url}/CargarImagenProyecto`, formData, {
       headers: new HttpHeaders({
-       
+
       })
     });
   }
@@ -77,29 +77,40 @@ export class ClienteService {
   }
 
   BuscarRegistroFinanciera(id: Number): Observable<FinancieraModelo> {
-    return this.http.get<FinancieraModelo>(`${this.url}/financieras/${id}`, {
+    return this.http.get<FinancieraModelo>(`${this.url}/clientes/${id}/financiera`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })
     });
   }
 
+  AutualizarRegistroFinanciera(id: Number, modelo: FinancieraModelo): Observable<FinancieraModelo> {
+    return this.http.patch<FinancieraModelo>(`${this.url}/clientes/${id}/financiera`, modelo, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
 
   GuardarRegistroFinanciera(modelo: FinancieraModelo): Observable<FinancieraModelo> {
-    return this.http.post<FinancieraModelo>(`${this.url}/financieras`, {
+    let idCliente = 0;
+    if (modelo.clienteId) {
+      idCliente = parseInt(modelo.clienteId.toString());
+    }
+    return this.http.post<FinancieraModelo>(`${this.url}/clientes/${modelo.clienteId}/financiera`, {
       totalIngresos: modelo.totalIngresos,
       datosTrabajo: modelo.datosTrabajo,
-      tiempoTabajoActual: modelo.tiempoTabajoActual,
+      tiempoTrabajoActual: modelo.tiempoTrabajoActual,
       nombreReferenciaFamiliar: modelo.nombreReferenciaFamiliar,
       telefonoReferenciaFamiliar: modelo.telefonoReferenciaFamiliar,
       nombreReferenciaPersonal: modelo.nombreReferenciaPersonal,
       telefonoReferenciaPersonal: modelo.telefonoReferenciaPersonal,
-      clienteId: modelo.clienteId
+      clienteId: idCliente
     }, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })
-    });   
+    });
   }
 
 

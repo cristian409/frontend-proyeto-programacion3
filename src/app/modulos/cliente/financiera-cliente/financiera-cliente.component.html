@@ -7,17 +7,17 @@
         <div class="input-field col s4">
           <i class="small material-icons prefix">attach_money</i>
           <input formControlName="ingreso" id="ingreso" type="number" class="validate">
-          <label for="ingreso">Total Ingresos</label>
+          <label [class.active]="isActive" for="ingreso">Total Ingresos</label>
         </div>
         <div class="input-field col s4">
           <i class="small material-icons prefix">business</i>
           <input formControlName="nombre" id="nombre" type="text" class="validate">
-          <label for="nombre">Nombre Empresa</label>
+          <label [class.active]="isActive" for="nombre">Nombre Empresa</label>
         </div>
         <div class="input-field col s4">
           <i class="small material-icons prefix">date_range</i>
           <input formControlName="tiempoTrabajo" id="tiempoTrabajo" type="text" class="validate">
-          <label for="tiempoTrabajo">Tiempo Trabajo actual</label>
+          <label [class.active]="isActive" for="tiempoTrabajo">Tiempo Trabajo actual</label>
         </div>
       </div>
       <legend> Referencia Familiar </legend>
@@ -25,12 +25,12 @@
         <div class="input-field col s6">
           <i class="small material-icons prefix">account_circle</i>
           <input formControlName="nombreFamilia" id="nombreFamilia" type="text" class="validate">
-          <label for="nombreFamilia">Nombre Referencia</label>
+          <label [class.active]="isActive" for="nombreFamilia">Nombre Referencia</label>
         </div>
         <div class="input-field col s6">
           <i class="small material-icons prefix">phone</i>
           <input formControlName="telefonoFamilia" id="telefonoFamilia" type="text" class="validate">
-          <label for="telefonoFamilia">Telefono Referencia</label>
+          <label [class.active]="isActive" for="telefonoFamilia">Telefono Referencia</label>
         </div>
       </div>
       <legend> Referencia Personal </legend>
@@ -38,12 +38,12 @@
         <div class="input-field col s6">
           <i class="small material-icons prefix">account_circle</i>
           <input formControlName="nombrePersonal" id="nombrePersonal" type="text" class="validate">
-          <label for="nombrePersonal">Nombre Referencia</label>
+          <label [class.active]="isActive"  for="nombrePersonal">Nombre Referencia</label>
         </div>
         <div class="input-field col s6">
           <i class="small material-icons prefix">phone</i>
           <input formControlName="telefonoPersonal" id="telefonoPersonal" type="text" class="validate">
-          <label for="telefonoPersonal">Telefono Referencia</label>
+          <label [class.active]="isActive" for="telefonoPersonal">Telefono Referencia</label>
         </div>
       </div>
       <div class="row">

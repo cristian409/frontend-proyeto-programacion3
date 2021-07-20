@@ -13,7 +13,8 @@ declare const abrirModal: any;
 export class FinancieraClienteComponent implements OnInit {
 
   fgValidacion: FormGroup = this.fb.group({});
-  id: number = 0;
+  id: Number = 0;
+  public isActive: boolean = false;
   constructor(private fb: FormBuilder,
     private router: Router,
     private servicioCliente: ClienteService,
@@ -41,17 +42,18 @@ export class FinancieraClienteComponent implements OnInit {
     this.id = this.route.snapshot.params["id"];
     this.servicioCliente.BuscarRegistroFinanciera(this.id).subscribe(
       (datos) => {
+        this.isActive = true;
         this.obtenerFGV.id.setValue(datos.clienteId);
         this.obtenerFGV.ingreso.setValue(datos.totalIngresos);
         this.obtenerFGV.nombre.setValue(datos.datosTrabajo);
-        this.obtenerFGV.tiempoTrabajo.setValue(datos.tiempoTabajoActual);
+        this.obtenerFGV.tiempoTrabajo.setValue(datos.tiempoTrabajoActual);
         this.obtenerFGV.nombreFamilia.setValue(datos.nombreReferenciaFamiliar);
         this.obtenerFGV.telefonoFamilia.setValue(datos.telefonoReferenciaFamiliar);
         this.obtenerFGV.nombrePersonal.setValue(datos.nombreReferenciaPersonal);
         this.obtenerFGV.telefonoPersonal.setValue(datos.telefonoReferenciaPersonal);
       },
       (error) => {
-        abrirModal("¡Error!", "No se encuentran los datos");
+        abrirModal("Información", "Inserte un registro de financiera");
       }
     );
   }
@@ -62,7 +64,7 @@ export class FinancieraClienteComponent implements OnInit {
 
   GuardarRegistroFinanciera() {
     this.id = this.route.snapshot.params["id"];
-    
+
     let ingreso = this.obtenerFGV.ingreso.value;
     let nombre = this.obtenerFGV.nombre.value;
     let tiempoTrabajo = this.obtenerFGV.tiempoTrabajo.value;
@@ -70,17 +72,16 @@ export class FinancieraClienteComponent implements OnInit {
     let telefonoFamilia = this.obtenerFGV.telefonoFamilia.value;
     let nombrePersonal = this.obtenerFGV.nombrePersonal.value;
     let telefonoPersonal = this.obtenerFGV.telefonoPersonal.value;
-    let clienteId = this.id;
-    
+
     let obj = new FinancieraModelo();
     obj.totalIngresos = ingreso;
     obj.datosTrabajo = nombre;
-    obj.tiempoTabajoActual = tiempoTrabajo;
+    obj.tiempoTrabajoActual = tiempoTrabajo;
     obj.nombreReferenciaFamiliar = nombreFamilia;
     obj.telefonoReferenciaFamiliar = telefonoFamilia;
     obj.nombreReferenciaPersonal = nombrePersonal;
     obj.telefonoReferenciaPersonal = telefonoPersonal;
-    obj.clienteId = clienteId;
+    obj.clienteId = this.id;
 
     this.servicioCliente.GuardarRegistroFinanciera(obj).subscribe(
       (datos) => {
@@ -91,6 +92,39 @@ export class FinancieraClienteComponent implements OnInit {
         abrirModal('Error', 'Error al guardar la Información Financiera.');
       }
     );
+  }
+
+  ActualizarRegistro() {
+    this.id = this.route.snapshot.params["id"];
+
+    let ingreso = this.obtenerFGV.ingreso.value;
+    let nombre = this.obtenerFGV.nombre.value;
+    let tiempoTrabajo = this.obtenerFGV.tiempoTrabajo.value;
+    let nombreFamilia = this.obtenerFGV.nombreFamilia.value;
+    let telefonoFamilia = this.obtenerFGV.telefonoFamilia.value;
+    let nombrePersonal = this.obtenerFGV.nombrePersonal.value;
+    let telefonoPersonal = this.obtenerFGV.telefonoPersonal.value;
+
+    let obj = new FinancieraModelo();
+    obj.totalIngresos = ingreso;
+    obj.datosTrabajo = nombre;
+    obj.tiempoTrabajoActual = tiempoTrabajo;
+    obj.nombreReferenciaFamiliar = nombreFamilia;
+    obj.telefonoReferenciaFamiliar = telefonoFamilia;
+    obj.nombreReferenciaPersonal = nombrePersonal;
+    obj.telefonoReferenciaPersonal = telefonoPersonal;
+    obj.clienteId = this.id;
+
+    this.servicioCliente.AutualizarRegistroFinanciera(obj.clienteId, obj).subscribe(
+      (datos) => {
+        abrirModal('Información', 'Registro almacenado correctamente.');
+        this.router.navigate(["/clientes/listar-clientes"]);
+      },
+      (error: any) => {
+        abrirModal('Error', 'Error al actualizar el registro.');
+      }
+    );
+
   }
 
 }
