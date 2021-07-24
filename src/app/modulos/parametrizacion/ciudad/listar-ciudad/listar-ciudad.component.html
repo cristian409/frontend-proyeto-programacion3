@@ -12,13 +12,14 @@
       <td>{{p.codigo}}</td>
       <td>{{p.nombre}}</td>
       <td>
-        <a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-ciudades/{{p.codigo}}">
-          <i class="material-icons left">edit</i>Editar ciudad
+        <a class="btn-floating waves-effect orange waves-light btn-small"
+          routerLink="/parametros/editar-ciudades/{{p.codigo}}">
+          <i class="material-icons samll right">edit</i>
         </a>
         &nbsp;
-        <button class="waves-effect red waves-light btn" type="button"
+        <button class="btn-floating waves-effect red waves-light btn-small" type="button"
           (click)="verificarEliminacion()" name="action">
-          Eliminar ciudad<i class="material-icons right">delete</i>
+          <i class="material-icons samll right">delete</i>
         </button>
       </td>
 

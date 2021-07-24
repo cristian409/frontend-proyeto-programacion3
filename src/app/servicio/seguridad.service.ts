@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { datosGenerales } from '../config/datos.generales';
+import { CambioContraseñaModelo } from '../modelos/cambio-contraseña.modelo';
 import { usuarioModelo } from '../modelos/usuario.modelo';
 
 @Injectable({
@@ -52,9 +53,9 @@ export class SeguridadService {
       clave: usuario.contraseña
     }, {
       headers: new HttpHeaders({
-
       })
     });
+    
   }
 
   guardarDatosEnLocal(usuario: usuarioModelo): Boolean {
@@ -73,6 +74,19 @@ export class SeguridadService {
       this.refrescarDatosSession(usuario);
       return true;
     }
+  }
+
+
+  cambiarContrasena(datos: CambioContraseñaModelo): Observable<any>{
+    return this.http.post<any>(`${this.url}/cambioContrasena`,{
+      correo: datos.correo,
+      contrasena_actual: datos.contrasena_actual,
+      contrasena_nueva: datos.contrasena_nueva
+    },{
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.obtenerToken()}`
+      })
+    });
   }
 
   cerrarSesion() {

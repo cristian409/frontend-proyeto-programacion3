@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CambiarClaveComponent } from '../seguridad/cambiar-clave/cambiar-clave.component';
 import { CrearBloqueComponent } from './bloque/crear-bloque/crear-bloque.component';
 import { EditarBloqueComponent } from './bloque/editar-bloque/editar-bloque.component';
 import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.component';
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'editar-inmuebles/:codigo',
     component: EditarInmuebleComponent
+  },
+  {
+    path: 'cambiar-clave',
+    component: CambiarClaveComponent
   }
 ];
 

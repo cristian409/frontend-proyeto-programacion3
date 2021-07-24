@@ -15,14 +15,14 @@
             <td>{{p.nombre}}</td>
             <td>{{p.descripcion}}</td>
             <td>{{p.imagen}}</td>
-            <td><a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-proyectos/{{p.codigo}}">
-                    <i class="material-icons left">edit</i>Editar ciudad
+            <td><a class="btn-floating waves-effect orange waves-light btn-small" 
+                    routerLink="/parametros/editar-proyectos/{{p.codigo}}">
+                    <i class="material-icons samll right">edit</i>
                 </a>
-            </td>
-            <td>
-                <button class="waves-effect red waves-light btn" type="button"
+                &nbsp;
+                <button class="btn-floating waves-effect red waves-light btn-small" type="button"
                     (click)="verificarEliminacion(p.codigo, p.nombre)" name="action">
-                    Eliminar proyecto<i class="material-icons right">delete</i>
+                    <i class="material-icons samll right">delete</i>
                 </button>
             </td>
         </tr>

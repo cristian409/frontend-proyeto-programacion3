@@ -19,7 +19,7 @@ export class EditarSolicitudComponent implements OnInit {
   fgValidacion: FormGroup = this.fb.group({});
   listaInmueble: InmuebleModelo[] = [];
   listaClientes: ClienteModelo[] = [];
-  id: Number = 0;
+  id: number = 0;
 
   constructor(private fb: FormBuilder,
     private servicio: SolicitudService,
@@ -90,20 +90,22 @@ export class EditarSolicitudComponent implements OnInit {
   }
 
   GuardarRegistro() {
-    let fecha = this.obtenerFGV.nombre.value;
-    let inmuebleId = this.obtenerFGV.apellidos.value;
-    let clienteId = this.obtenerFGV.fechaNacimiento.value;
-    let oferta = this.obtenerFGV.telefono.value;
-    let estudio = this.obtenerFGV.direccion.value;
+    let id = this.obtenerFGV.id.value;
+    let fecha = this.obtenerFGV.fecha.value;
+    let inmuebleId = this.obtenerFGV.inmuebleId.value;
+    let clienteId = this.obtenerFGV.clienteId.value;
+    let oferta = this.obtenerFGV.oferta.value;
+    let estudio = this.obtenerFGV.estudio.value;
 
     let obj = new SolicitudModelo();
+    obj.id = id;
     obj.fecha = fecha;
     obj.inmuebleId = inmuebleId;
     obj.clienteId = clienteId;
     obj.ofertaEconomica = oferta;
     obj.estado = estudio;
 
-    this.servicio.AutualizarRegistro(obj).subscribe(
+    this.servicio.ActualizarRegistro(obj).subscribe(
       (datos) => {
         abrirModal('Información', 'Registro almacenado correctamente.');
         this.router.navigate(["/solicitud/listar-solicitud"]);

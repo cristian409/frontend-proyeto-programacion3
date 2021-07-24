@@ -10,4 +10,5 @@ export class usuarioModelo {
     user?: usuarioModelo;
     token?: String;
     isLoggedIn: boolean = false;
+    nombreUsuario: String = this.nombre + " " + this.apellidoss;
 }

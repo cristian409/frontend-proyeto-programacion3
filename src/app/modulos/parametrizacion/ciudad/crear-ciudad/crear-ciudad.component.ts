@@ -24,7 +24,7 @@ export class CrearCiudadComponent implements OnInit {
 
   construirFormulario() {
     this.fgValidacion = this.fb.group({
-      nombre: ['', Validators.required],
+      correo: ['', Validators.required],
       paisId: ['', Validators.required]
     });
   }

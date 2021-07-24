@@ -11,7 +11,7 @@
           <input formControlName="descripcion" id="descripcion_proyecto" type="text" class="validate">
           <label for="descripcion_proyecto">Descripcion</label>
         </div>
-        <div class="file-field input-field">
+        <div class="file-field input-field col s6">
           <div class="btn">
             <i class="medium material-icons">camera</i>
             <input type="file" (change)="archivoSeleccionado($event)">
@@ -20,7 +20,7 @@
             <input class="file-path validate" type="text" placeholder="Subir Foto">
           </div>
         </div>
-        <input hidden formControlName="foto" type="text"/>
+        <input type="hidden" formControlName="foto" />
         <div class="input-field col s6">
           <label class="active">Ciudades</label>
           <select formControlName="ciudadId" class="browser-default">
