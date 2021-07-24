@@ -3,17 +3,17 @@
     <legend>Creacion de proyectos</legend>
     <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="GuardarRegistro()">
       <div class="row">
-        <div class="input-field col s3">
+        <div class="input-field col s4">
           <input formControlName="nombre" id="nombre_proyecto" type="text" class="validate">
           <label for="nombre_proyecto">Nombre proyecto</label>
         </div>
-        <div class="input-field col s9">
+        <div class="input-field col s4">
           <input formControlName="descripcion" id="descripcion_proyecto" type="text" class="validate">
           <label for="descripcion_proyecto">Descripcion</label>
         </div>
         <div class="file-field input-field col s6">
           <div class="btn">
-            <i class="medium material-icons">camera</i>
+            <i class="medium material-icons">save</i>
             <input type="file" (change)="archivoSeleccionado($event)">
           </div>
           <div class="file-path-wrapper">

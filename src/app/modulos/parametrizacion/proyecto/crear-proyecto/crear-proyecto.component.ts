@@ -27,7 +27,7 @@ export class CrearProyectoComponent implements OnInit {
     this.fgValidacion = this.fb.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
-      imagen: ['', Validators.required],
+      foto: ['', Validators.required],
       ciudadId: ['', Validators.required]
     });
   }
@@ -69,7 +69,7 @@ export class CrearProyectoComponent implements OnInit {
         obj.ciudadId = cId;
         this.servicio.guardarRegistro(obj).subscribe(
           (datos) => {
-            abrirModal("Información", "Proyecto almacenada correctamente");
+            abrirModal("Información", "Proyecto almacenado correctamente");
             this.router.navigate(["/parametros/listar-proyectos"]);
           },
           (error) => {
