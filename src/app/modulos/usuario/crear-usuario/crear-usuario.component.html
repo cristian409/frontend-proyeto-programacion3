@@ -1,1 +1,64 @@
-<p>crear-usuario works!</p>
+<div class="row">
+  <fieldset>
+    <legend> Creación de Usuarios</legend>
+    <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="GuardarRegistro()">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="small material-icons prefix">account_circle</i>
+          <input formControlName="nombre" id="nombre" type="text" class="validate">
+          <label for="nombre">Nombre</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="small material-icons prefix">account_circle</i>
+          <input formControlName="apellidos" id="apellidos" type="text" class="validate">
+          <label for="apellidos">Apellidos</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="small material-icons prefix">account_circle</i>
+          <input formControlName="documento" id="documento" type="number" class="validate">
+          <label for="documento">Documento Identidad</label>
+        </div>
+        <div class="input-field col s4">
+          <input formControlName="telefono" id="telefono" type="text" class="validate">
+          <label for="telefono">Telefono</label>
+        </div>
+        <div class="input-field col s4">
+          <select formControlName="rolId" class="browser-default">
+            <option value="" disabled selected>Escoja un Rol</option>
+            <option *ngFor="let r of listaRoles" value="{{r.id}}">{{r.nombre}}</option>
+          </select>
+          <label class="active">Roles</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="small material-icons prefix">email</i>
+          <input formControlName="email" id="email" type="email" class="validate">
+          <label for="email">Correo</label>
+        </div>
+        <div class="input-field col s6">
+          <select formControlName="ciudadId" class="browser-default">
+            <option value="" disabled selected>Escoja una Ciudad</option>
+            <option *ngFor="let c of ciudadListado" value="{{c.codigo}}">{{c.nombre}}</option>
+          </select>
+          <label class="active">Ciudades</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <button
+            [disabled]="obtenerFGV.nombre.errors || obtenerFGV.apellidos.errors || obtenerFGV.documento.errors || obtenerFGV.telefono.errors || obtenerFGV.rolId.errors || obtenerFGV.email.errors || obtenerFGV.ciudadId.errors"
+            class="btn waves-effect waves-light" type="submit" name="action">Guardar
+            <i class="material-icons right">save</i>
+          </button>
+          &nbsp;
+          &nbsp;
+          <a class="waves-effect waves-light btn red" routerLink="/usuarios/listar-usuarios"><i
+              class="material-icons left">cancel</i>Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</div>

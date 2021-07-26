@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './publico/errores/error404/error404.component';
+import { InfoProyectoComponent } from './publico/info-proyecto/info-proyecto.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 
 
@@ -13,6 +14,10 @@ const routes: Routes = [
     path:'',
     pathMatch: 'full',
     redirectTo: '/inicio'
+  },
+  { 
+    path:'info-proyecto/:id',
+    component: InfoProyectoComponent 
   },
   {
     path: 'parametros',
@@ -29,6 +34,10 @@ const routes: Routes = [
   {
     path: 'solicitud',
     loadChildren: () => import('./modulos/solicitud-inmueble/solicitud-inmueble.module').then(m => m.SolicitudInmuebleModule)
+  },
+  {
+    path: 'usuarios',
+    loadChildren: () => import('./modulos/usuario/usuario.module').then(m => m.UsuarioModule)
   },
   { 
     path:'error-404',

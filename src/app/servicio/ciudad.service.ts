@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { datosGenerales } from '../config/datos.generales';
 import { CiudadModelo } from '../modelos/ciudad.modelo';
+import { PaisModelo } from '../modelos/pais.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
@@ -24,8 +25,16 @@ export class CiudadService {
     });
   }
 
-  buscarRegistro(codigo: number): Observable<CiudadModelo> {
+  buscarRegistro(codigo?: Number): Observable<CiudadModelo> {
     return this.http.get<CiudadModelo>(`${this.url}/ciudades/${codigo}`, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  buscarRegistroPais(codigo?: Number): Observable<PaisModelo>{
+    return this.http.get<PaisModelo>(`${this.url}/ciudads/${codigo}/pais`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })

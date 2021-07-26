@@ -1,5 +1,17 @@
-<div class="center">
-    <h3>Bienvenidos al Sistema de Proyecto</h3>
+<div class="content_inicio">
+    <div class="row">
+        <div *ngFor="let p of listaProyectos" class="col s4">
+            <div class="card">
+                <div class="card-image">
+                    <img class="responsive-img" src="http://localhost:3000/files/1/{{p.imagen}}">
+                    <span class="card-title">{{p.nombre}}</span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light" routerLink="/info-proyecto/{{p.codigo}}"><i
+                            class="material-icons">visibility</i></a>
+                </div>
+                <div class="card-content">
+                    <p>{{p.descripcion}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-

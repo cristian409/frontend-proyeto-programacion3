@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { datosGenerales } from '../config/datos.generales';
 import { InmuebleModelo } from '../modelos/inmueble.modelo';
+import { SolicitudModelo } from '../modelos/solicitud.modelo';
+import { SolicitudInmuebleModule } from '../modulos/solicitud-inmueble/solicitud-inmueble.module';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({

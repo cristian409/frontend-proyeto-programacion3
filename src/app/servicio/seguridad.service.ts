@@ -65,7 +65,8 @@ export class SeguridadService {
       let datos = {
         id: usuario.user?.id,
         username: usuario.user?.email,
-        token: usuario.token
+        token: usuario.token,
+        nombreRol: usuario.nombreRol
       };
       let datosString = JSON.stringify(datos);
       localStorage.setItem("sessionData", datosString);
@@ -80,16 +81,15 @@ export class SeguridadService {
     this.refrescarDatosSession(new usuarioModelo());
   }
 
-  // identificarUsuario(usuario: usuarioModelo): Observable<any> {
-  //   return this.http.post<any>(`${this.url}/identificar`, {
-  //     correo: usuario.email,
-  //     clave: usuario.contraseña
-  //   }, {
-  //     headers: new HttpHeaders({
+  validarCorreo(usuario: usuarioModelo): Observable<any> {
+    return this.http.post<any>(`${this.url}/reset-password/`, {
+      correo: usuario.email,
+    }, {
+      headers: new HttpHeaders({
 
-  //     })
-  //   });
-  // }
+      })
+    });
+  }
 
 
 }

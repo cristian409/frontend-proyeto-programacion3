@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { datosGenerales } from '../config/datos.generales';
 import { BloqueModelo } from '../modelos/bloque.modelo';
+import { InmuebleModelo } from '../modelos/inmueble.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
@@ -26,6 +27,14 @@ export class BloqueService {
 
   buscarRegistro(codigo: number): Observable<BloqueModelo> {
     return this.http.get<BloqueModelo>(`${this.url}/bloques/${codigo}`, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  buscarRegistroInmuble(codigo: number): Observable<InmuebleModelo[]> {
+    return this.http.get<InmuebleModelo[]>(`${this.url}/bloques/${codigo}/inmuebles`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })

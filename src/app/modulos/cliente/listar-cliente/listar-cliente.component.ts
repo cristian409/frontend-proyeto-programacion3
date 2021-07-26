@@ -23,7 +23,7 @@ export class ListarClienteComponent implements OnInit {
         this.listaRegistros = datos;
       },
       (error) => {
-        abrirModal("Error", `Error listando las Clientes`);
+        abrirModal("Error", `Error listando los Clientes`);
       }
     );
   }
@@ -38,11 +38,11 @@ export class ListarClienteComponent implements OnInit {
     modelo.nombre = nombre;
     this.servicio.EliminarRegistro(modelo).subscribe(
       (datos) => {
-        abrirModal("Información", `La Cliente ${nombre} a sido eliminado correctamente`);
+        abrirModal("Información", `El Cliente ${nombre} a sido eliminado correctamente`);
         this.listaRegistros = this.listaRegistros.filter(x => x.id != codigo);
       },
       (error) => {
-        abrirModal("¡Error!", `Error eliminando la Cliente ${nombre}`);
+        abrirModal("¡Error!", `Error eliminando el Cliente ${nombre}`);
       }
     );
   }

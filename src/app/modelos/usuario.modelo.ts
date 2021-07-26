@@ -5,9 +5,11 @@ export class usuarioModelo {
     documento?: Number;
     email?: String;
     contraseña?: String;
+    telefono?: String;
     id_ciudad?: Number;
     rolId?: String;
     user?: usuarioModelo;
     token?: String;
     isLoggedIn: boolean = false;
+    nombreRol: String='';
 }

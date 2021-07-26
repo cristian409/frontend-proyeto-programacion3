@@ -3,3 +3,7 @@
     color: #545454;
     font-weight: bold;
 }
+
+.dropdown-content>li>a {
+    color: #545454;
+}

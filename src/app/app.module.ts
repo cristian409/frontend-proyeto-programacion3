@@ -10,6 +10,8 @@ import { InicioComponent } from './publico/inicio/inicio.component';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfoProyectoComponent } from './publico/info-proyecto/info-proyecto.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BarraNavegacionLateralComponent,
     PiePaginaComponent,
     InicioComponent,
-    Error404Component
+    Error404Component,
+    InfoProyectoComponent
   ],
   imports: [
     BrowserModule,

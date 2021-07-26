@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { datosGenerales } from '../config/datos.generales';
+import { InmuebleModelo } from '../modelos/inmueble.modelo';
 import { SolicitudModelo } from '../modelos/solicitud.modelo';
 import { SeguridadService } from './seguridad.service';
 
@@ -19,7 +20,7 @@ export class SolicitudService {
   }
 
   ListarRegistros(): Observable<SolicitudModelo[]> {
-    return this.http.get<SolicitudModelo[]>(`${this.url}/solicitud-inmuebles`, {
+    return this.http.get<SolicitudModelo[]>(`${this.url}/solicitud-inmuebles/`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })
@@ -35,7 +36,7 @@ export class SolicitudService {
   }
 
   GuardarRegistro(modelo: SolicitudModelo): Observable<SolicitudModelo> {
-    return this.http.post<SolicitudModelo>(`${this.url}/solicitud-inmuebles`, {
+    return this.http.post<SolicitudModelo>(`${this.url}/solicitud-inmuebles/`, {
       fecha: modelo.fecha,
       ofertaEconomica: modelo.ofertaEconomica,
       estado: modelo.estado,

@@ -53,7 +53,7 @@ export class ClienteService {
   }
 
   GuardarImagen(formData: FormData): Observable<CargaArchivoModel> {
-    return this.http.post<CargaArchivoModel>(`${this.url}/CargarImagenProyecto`, formData, {
+    return this.http.post<CargaArchivoModel>(`${this.url}/CargarImagenCliente`, formData, {
       headers: new HttpHeaders({
 
       })

@@ -7,8 +7,9 @@ import { SolicitudModelo } from 'src/app/modelos/solicitud.modelo';
 import { ClienteService } from 'src/app/servicio/cliente.service';
 import { InmuebleService } from 'src/app/servicio/inmueble.service';
 import { SolicitudService } from 'src/app/servicio/solicitud.service';
+import { SolicitudInmuebleModule } from '../solicitud-inmueble.module';
 
-declare const abrirModal:any;
+declare const abrirModal: any;
 @Component({
   selector: 'app-crear-solicitud',
   templateUrl: './crear-solicitud.component.html',
@@ -48,10 +49,11 @@ export class CrearSolicitudComponent implements OnInit {
         this.listaInmueble = datos;
       },
       (error: any) => {
-        abrirModal('Información', 'Error cargando los inmuebles');
+        abrirModal('¡Error!', 'Error cargando los inmuebles');
       }
     );
   }
+
 
   ListarClientes() {
     this.servicioCliente.ListarRegistros().subscribe(
@@ -59,7 +61,7 @@ export class CrearSolicitudComponent implements OnInit {
         this.listaClientes = datos;
       },
       (error: any) => {
-        abrirModal('Información', 'Error cargando los clientes.');
+        abrirModal('¡Error!', 'Error cargando los clientes.');
       }
     );
   }
@@ -81,7 +83,7 @@ export class CrearSolicitudComponent implements OnInit {
     obj.clienteId = clienteId;
     obj.ofertaEconomica = oferta;
     obj.estado = estudio;
-        
+
     this.servicio.GuardarRegistro(obj).subscribe(
       (datos) => {
         abrirModal('Información', 'Registro almacenado correctamente.');

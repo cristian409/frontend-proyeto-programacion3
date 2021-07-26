@@ -1,1 +1,53 @@
-<p>listar-usuario works!</p>
+<br>
+<a class="waves-effect waves-light btn" routerLink="/usuarios/crear-usuarios"><i
+    class="material-icons left">add</i>Agregar Usuarios</a>
+<table class="table responsive-table highlight">
+  <thead>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Documento</th>
+    <th>Correo</th>
+    <th>Telefono</th>
+    <th>Usuario</th>
+    <th>Opciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of listaRegistros | paginate:{ itemsPerPage: 4, currentPage: pagina}">
+      <td>{{p.nombre}}</td>
+      <td>{{p.apellidoss}}</td>
+      <td>{{p.documento}}</td>
+      <td>{{p.email}}</td>
+      <td>{{p.telefono}}</td>
+      <td>{{p.nombreRol}}</td>
+      <td>
+        <a class="btn-floating waves-effect orange waves-light btn-small" routerLink="/usuarios/editar-usuarios/{{p.id}}">
+          <i class="material-icons small left">edit</i>
+        </a>
+        &nbsp;
+        <button class="btn-floating waves-effect red waves-light btn-small" type="button"
+          (click)="verificarEliminacion()" name="action">
+          <i class="material-icons samll right">delete</i>
+        </button>
+      </td>
+
+      <!-- Modal Structure -->
+      <div id="confimacionModal" class="modal">
+        <div class="modal-content">
+          <h4 id="tituloModal1"></h4>
+          <p id="textoModal1"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="waves-effect green waves-light btn" type="button" (click)="Eliminacion(p.id, p.nombre)">
+            Confirmar<i class="material-icons right">check</i>
+          </button>
+          &nbsp;
+          &nbsp;
+          <a class="modal-close waves-effect waves-light red btn"><i class="material-icons right">close</i>Cerrar</a>
+        </div>
+      </div>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="pagina = $event" previousLabel="Anterior" nextLabel="Siguiente"
+  screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+</pagination-controls>

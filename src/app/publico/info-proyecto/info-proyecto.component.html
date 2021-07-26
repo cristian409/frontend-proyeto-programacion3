@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col l7 s12">
+        <h2>{{proyecto?.nombre}}</h2>
+
+        <img width="400" src="http://localhost:3000/files/1/{{proyecto?.imagen}}" class="responsive-img">
+
+    </div>
+
+    <div class="col l5 s12">
+
+        <div class="card-panel">
+            <h5>Ubicacion</h5>
+
+            <span><i class="material-icons small left">location_on</i></span>
+            <span class="">{{ciudad?.nombre}} - {{pais?.nombre}}</span>
+
+            <h5>Descripción</h5>
+            <span><i class="material-icons small left">view_headline</i></span>
+            <span class="">{{proyecto?.descripcion}}</span>
+            <hr>
+
+            <h5>Inmuebles</h5>
+            <ul *ngFor="let i of listaInfoInmuebles" class="">
+                <li>{{i.identificador}}</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

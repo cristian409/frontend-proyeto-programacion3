@@ -5,26 +5,34 @@
     <ul class="right hide-on-med-and-down">
       <li *ngIf="isLoggedIn"><a routerLink="solicitud/listar-solicitud">Solicitudes</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="clientes/listar-clientes">Clientes</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-inmuebles">Inmuebles</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloques">Bloques</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Paises</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudades">Ciudades</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyectos">Proyectos</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+      <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-inmuebles">Inmuebles</a></li>
+      <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-bloques">Bloques</a></li>
+      <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-pais">Paises</a></li>
+      <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-ciudades">Ciudades</a></li>
+      <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-proyectos">Proyectos</a></li>
+      <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="usuarios/listar-usuarios">Usuarios</a></li>
+      <li *ngIf="isLoggedIn"><a class="dropdown-trigger" data-target="dropdown">Usuario</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
     </ul>
   </div>
 </nav>
-  
+
 <ul class="sidenav" id="mobile-demo">
   <li *ngIf="isLoggedIn"><a routerLink="solicitud/crear-solicitud">Solicitudes</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="clientes/listar-clientes">Clientes</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-inmuebles">Inmuebles</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloques">Bloques</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Paises</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudades">Ciudades</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyectos">Proyectos</a></li>
+  <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-inmuebles">Inmuebles</a></li>
+  <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-bloques">Bloques</a></li>
+  <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-pais">Paises</a></li>
+  <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-ciudades">Ciudades</a></li>
+  <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-proyectos">Proyectos</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
   <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
   <li><a routerLink="/iniciar-sesion">Iniciar Sesión</a></li>
+</ul>
+
+<!-- Dropdown Structure -->
+<ul id='dropdown' class='dropdown-content'>
+  <li><a routerLink="">Cambiar Contraseña</a></li>
+  <li class="divider" tabindex="-1"></li>
+  <li><a routerLink="seguridad/cerrar-sesion"><i class="material-icons">cloud</i>Cerrar Sesión</a></li>
 </ul>
