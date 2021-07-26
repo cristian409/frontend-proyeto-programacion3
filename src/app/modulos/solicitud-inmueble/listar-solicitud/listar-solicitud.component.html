@@ -9,6 +9,7 @@
     <th>Inmueble</th>
     <th>Cliente</th>
     <th>Estado</th>
+    <th>Estado de peticion</th>
     <th>Opciones</th>
   </thead>
   <tbody>
@@ -19,6 +20,7 @@
       <td>{{p.inmuebleId}}</td>
       <td>{{p.clienteId}}</td>
       <td>{{p.estado}}</td>
+      <td>{{p.aceptarCancelarSolicitud}}</td>
       <td>
         <a class="btn-floating waves-effect orange waves-light btn-small"
           routerLink="/solicitud/editar-solicitud/{{p.id}}">
