@@ -81,6 +81,7 @@ export class CrearSolicitudComponent implements OnInit {
     obj.clienteId = clienteId;
     obj.ofertaEconomica = oferta;
     obj.estado = estudio;
+    obj.aceptarCancelarSolicitud = "Pendiente"
         
     this.servicio.GuardarRegistro(obj).subscribe(
       (datos) => {

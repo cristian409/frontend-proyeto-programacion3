@@ -40,7 +40,8 @@ export class SolicitudService {
       ofertaEconomica: modelo.ofertaEconomica,
       estado: modelo.estado,
       inmuebleId: modelo.inmuebleId,
-      clienteId: modelo.clienteId
+      clienteId: modelo.clienteId,
+      aceptarCancelarSolicitud: modelo.aceptarCancelarSolicitud
     }, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`

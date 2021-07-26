@@ -5,4 +5,5 @@ export class SolicitudModelo {
     estado?: String;
     inmuebleId?: number;
     clienteId?: number;
+    aceptarCancelarSolicitud: String = "Pendiente";
 }

@@ -1,1 +1,59 @@
-<p>aceptar-eliminar-solicitud works!</p>
+<div class="row">
+    <fieldset>
+        <legend> Aceptar/Rechazar solicitud</legend>
+        <fieldset class="formulario">
+            <form class="col s12" [formGroup]="fgValidacion">
+                <input type="hidden" formControlName="id">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input formControlName="fecha" id="fecha" type="date" class="validate">
+                        <label for="fecha">Fecha Solicitud</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <label class="active">Inmueble</label>
+                        <select formControlName="inmuebleId" class="browser-default">
+                            <option value="" disabled selected>Escoja un Inmueble</option>
+                            <option *ngFor="let i of listaInmueble" value="{{i.codigo}}">{{i.identificador}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <label class="active">Cliente</label>
+                        <select formControlName="clienteId" class="browser-default">
+                            <option value="" disabled selected>Escoja un cliente</option>
+                            <option *ngFor="let c of listaClientes" value="{{c.id}}">{{c.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s4">
+                        <input formControlName="oferta" id="oferta" type="number" class="validate">
+                        <label class="active" for="oferta">Oferta para Separar</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <label class="active">Estado de Solicitud</label>
+                        <select formControlName="estudio" class="browser-default">
+                            <option value="" disabled selected>Escoja un Estado</option>
+                            <option value="enEstudio" selected>En estudio</option>
+                            <option value="sinEstudio">Sin Estudio</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+        <div class="row">
+            <div class="col s12">
+                <button class="btn waves-effect waves-light" (click)="AceptarSolicitud()">Aceptar solicitud
+                    <i class="material-icons right">check</i>
+                </button>
+                &nbsp;
+                &nbsp;
+                <a class="waves-effect waves-light btn orange" (click)="RechazarSolicitud()"><i
+                        class="material-icons left">cancel</i>Declinar solicitud</a>
+                &nbsp;
+                &nbsp;
+                <a class="waves-effect waves-light btn red" routerLink="/solicitud/listar-solicitud"><i
+                        class="material-icons left">cancel</i>Cancelar</a>
+            </div>
+        </div>
+    </fieldset>
+</div>
