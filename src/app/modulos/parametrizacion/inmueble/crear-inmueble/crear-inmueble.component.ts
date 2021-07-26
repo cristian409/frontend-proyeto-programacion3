@@ -6,6 +6,7 @@ import { InmuebleModelo } from 'src/app/modelos/inmueble.modelo';
 import { BloqueService } from 'src/app/servicio/bloque.service';
 import { InmuebleService } from 'src/app/servicio/inmueble.service';
 
+
 @Component({
   selector: 'app-crear-inmueble',
   templateUrl: './crear-inmueble.component.html',
@@ -53,6 +54,7 @@ export class CrearInmuebleComponent implements OnInit {
     obj.identificador = ide;
     obj.valor = val;
     obj.bloqueId = bId;
+    obj.solicitud = "Pendiente";
     this.servicio.guardarRegistro(obj).subscribe(
       (datos) => {
         alert("Inmueble almacenada correctamente");

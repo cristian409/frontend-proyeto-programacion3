@@ -14,6 +14,7 @@
                 <div class="input-field col s4">
                     <label class="active">Bloques</label>
                     <select formControlName="bloqueId" class="browser-default">
+                        <option value="" disabled selected>Escoja un Bloque</option>
                         <option *ngFor="let b of listaBloques" value="{{b.codigo}}">{{b.nombre}}</option>
                     </select>
                 </div>

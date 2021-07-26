@@ -16,39 +16,33 @@ export class ListarUsuarioComponent implements OnInit {
 
   pagina: number = 1;
   listaRegistros: usuarioModelo[] = [];
-  listaRoles: rolModelo[] = [];
   constructor(private servicio: UsuariosService) { }
 
   ngOnInit(): void {
-    this.ListaRoles();
     this.ListarRegistros();
   }
 
   ListarRegistros(){
     this.servicio.ListarRegistros().subscribe(
-      (datos) => {
-        this.listaRegistros = datos;
-        this.listaRegistros.forEach(elemento => {
-          this.listaRoles.forEach(element => {
-            if (elemento.rolId == element.id) {
-              elemento.nombreRol = element.nombre
-            }
-          });
-        });        
+      (usuarios) => {
+        this.servicio.ListarRegistrosRoles().subscribe(
+          (roles)=>{
+            usuarios.forEach(usuario => {
+              roles.forEach(rol => {
+                if (usuario.rolId == rol.id) {
+                  usuario.nombreRol = rol.nombre
+                }
+              });
+            });
+          },
+          (error: any)=>{
+            abrirModal("Error", `Error listando los roles`);
+          }
+        );
+        this.listaRegistros = usuarios;
       },
       (error) => {
         abrirModal("Error", `Error listando los usuarios`);
-      }
-    );
-  }
-
-  ListaRoles(){
-    this.servicio.ListarRegistrosRoles().subscribe(
-      (datos) => {
-        this.listaRoles = datos;
-      },
-      (error: any) => {
-        abrirModal("Error", `Error listando los roles`);
       }
     );
   }

@@ -6,6 +6,7 @@ import { InmuebleModelo } from 'src/app/modelos/inmueble.modelo';
 import { BloqueService } from 'src/app/servicio/bloque.service';
 import { InmuebleService } from 'src/app/servicio/inmueble.service';
 
+declare const abrirModal: any;
 @Component({
   selector: 'app-editar-inmueble',
   templateUrl: './editar-inmueble.component.html',
@@ -16,6 +17,7 @@ export class EditarInmuebleComponent implements OnInit {
   fgValidacion: FormGroup = this.fb.group({});
   listaBloque: BloqueModelo[] = [];
   codigo: number = 0;
+  solicitud?: String="";
   constructor(private fb: FormBuilder,
     private servicio: InmuebleService,
     private router: Router,
@@ -43,7 +45,7 @@ export class EditarInmuebleComponent implements OnInit {
         this.buscarRegistro();
       },
       (error) => {
-        alert("Error cargando los bloques");
+        abrirModal("¡Error!", "Error cargando los proyecto.");
       }
     );
   }
@@ -56,9 +58,10 @@ export class EditarInmuebleComponent implements OnInit {
         this.obtenerFGV.identificador.setValue(datos.identificador);
         this.obtenerFGV.valor.setValue(datos.valor);
         this.obtenerFGV.bloqueId.setValue(datos.bloqueId);
+        this.solicitud = datos.solicitud;
       },
       (error) => {
-        alert("no se encuentran los datos");
+        abrirModal("¡Error!", "Error no se encontro registro de inmueble.");
       }
     );
   }
@@ -77,13 +80,14 @@ export class EditarInmuebleComponent implements OnInit {
     obj.identificador = ide;
     obj.valor = val;
     obj.bloqueId = bId;
+    obj.solicitud = this.solicitud;
     this.servicio.actualizarRegistro(obj).subscribe(
       (datos) => {
-        alert("Inmueble actualizado correctamente");
+        abrirModal("Información", "Registro del inmueble actulizado.");
         this.router.navigate(["/parametros/listar-inmuebles"]);
       },
       (error) => {
-        alert("Error guardando el inmueble");
+        abrirModal("¡Error!", "Error no se concluyo el guardado del registro.");
       }
     );
   }

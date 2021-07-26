@@ -6,8 +6,8 @@ import { ClienteService } from 'src/app/servicio/cliente.service';
 import { InmuebleService } from 'src/app/servicio/inmueble.service';
 import { SolicitudService } from 'src/app/servicio/solicitud.service';
 
-declare const abrirModal:any;
-declare const confirmarModal:any;
+declare const abrirModal: any;
+declare const confirmarModal: any;
 @Component({
   selector: 'app-listar-solicitud',
   templateUrl: './listar-solicitud.component.html',
@@ -28,10 +28,10 @@ export class ListarSolicitudComponent implements OnInit {
     this.ListarRegistrosS();
   }
 
-  ListarRegistrosS(){
+  ListarRegistrosS() {
     this.servicio.ListarRegistros().subscribe(
       (datos) => {
-        this.listaRegistros = datos;       
+        this.listaRegistros = datos;
       },
       (error) => {
         abrirModal("Error", `Error listando las solicitudes.`);
@@ -44,14 +44,35 @@ export class ListarSolicitudComponent implements OnInit {
   }
 
   Eliminacion(codigo?: Number) {
-    let modelo = new SolicitudModelo();
-    this.servicio.EliminarRegistro(modelo).subscribe(
-      (datos) => {
-        abrirModal("Información", `La Solicitud numero ${codigo} a sido eliminado correctamente`);
-        this.listaRegistros = this.listaRegistros.filter(x => x.id != codigo);
+    this.servicio.BuscarRegistro(codigo).subscribe(
+      (solicitud) => {
+        this.servicioInmueble.buscarRegistro(solicitud.inmuebleId).subscribe(
+          (inmueble) => {
+            inmueble.solicitud = "Pendiente";
+            this.servicioInmueble.actualizarRegistro(inmueble).subscribe(
+              ()=>{
+                this.servicio.EliminarRegistro(solicitud).subscribe(
+                  (datos) => {
+                    abrirModal("Información", `La Solicitud numero ${codigo} a sido eliminado correctamente`);
+                    this.listaRegistros = this.listaRegistros.filter(x => x.id != codigo);
+                  },
+                  (error) => {
+                    abrirModal("¡Error!", `Error eliminando la solicitud numero ${codigo}`);
+                  }
+                );
+              },
+              (error: any)=>{
+                abrirModal("¡Error!", `Error actualizando el registro del inmueble`);
+              }
+            );
+          },
+          (error: any) => {
+            abrirModal("¡Error!", `Error buscando el registro del inmueble`);
+          }
+        );
       },
-      (error) => {
-        abrirModal("¡Error!", `Error eliminando la solicitud numero ${codigo}`);
+      (error: any) => {
+        abrirModal("¡Error!", `Error buscando la solicitud`);
       }
     );
   }

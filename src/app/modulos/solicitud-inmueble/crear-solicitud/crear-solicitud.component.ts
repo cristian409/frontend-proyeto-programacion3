@@ -46,7 +46,11 @@ export class CrearSolicitudComponent implements OnInit {
   ListarInmuebles() {
     this.servicioInmueble.listarRegistros().subscribe(
       (datos) => {
-        this.listaInmueble = datos;
+        datos.forEach(inmueble => {
+          if (inmueble.solicitud == "Pendiente") {
+            this.listaInmueble.push(inmueble);
+          }
+        });
       },
       (error: any) => {
         abrirModal('¡Error!', 'Error cargando los inmuebles');
@@ -83,19 +87,31 @@ export class CrearSolicitudComponent implements OnInit {
     obj.clienteId = clienteId;
     obj.ofertaEconomica = oferta;
     obj.estado = estudio;
-<<<<<<< HEAD
 
-=======
     obj.aceptarCancelarSolicitud = "Pendiente"
-        
->>>>>>> master
-    this.servicio.GuardarRegistro(obj).subscribe(
-      (datos) => {
-        abrirModal('Información', 'Registro almacenado correctamente.');
-        this.router.navigate(["/solicitud/listar-solicitud"]);
+
+    this.servicioInmueble.buscarRegistro(inmuebleId).subscribe(
+      (inmueble) =>{
+        inmueble.solicitud = estudio;
+        this.servicioInmueble.actualizarRegistro(inmueble).subscribe(
+          (datos)=>{
+            this.servicio.GuardarRegistro(obj).subscribe(
+              (datos) => {
+                abrirModal('Información', 'Registro almacenado correctamente.');
+                this.router.navigate(["/solicitud/listar-solicitud"]);
+              },
+              (error: any) => {
+                abrirModal('Error', 'Error al guardar el registro.');
+              }
+            );
+          },
+          (error: any)=>{
+            abrirModal('Error', 'Error al acutlizar el registro del inmueble.');
+          }
+        );
       },
-      (error: any) => {
-        abrirModal('Error', 'Error al guardar el registro.');
+      (error: any) =>{
+        abrirModal('Error', 'Error al buscar el registro del inmueble.');
       }
     );
   }

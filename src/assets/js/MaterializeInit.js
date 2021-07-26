@@ -13,5 +13,5 @@
     var instances = M.Dropdown.init(elems, {});
   });
 
-  $('#descripcion_proyecto').val('New Text');
-  M.textareaAutoResize($('#descripcion_proyecto'));
+  // $('#descripcion_proyecto').val('New Text');
+  // M.textareaAutoResize($('#descripcion_proyecto'));

@@ -27,7 +27,7 @@ export class SolicitudService {
     });
   }
 
-  BuscarRegistro(id: Number): Observable<SolicitudModelo> {
+  BuscarRegistro(id?: Number): Observable<SolicitudModelo> {
     return this.http.get<SolicitudModelo>(`${this.url}/solicitud-inmuebles/${id}`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`

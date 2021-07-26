@@ -1,5 +1,5 @@
 export class SolicitudModelo {
-    id?: number;
+    id?: Number;
     fecha?: String;
     ofertaEconomica?:number;
     estado?: String;

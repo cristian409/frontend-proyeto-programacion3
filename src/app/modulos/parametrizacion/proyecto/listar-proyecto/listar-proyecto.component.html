@@ -11,23 +11,12 @@
         <tr *ngFor="let p of listaRegistros | paginate:{ itemsPerPage: 4, currentPage: pagina}">
             <td>{{p.codigo}}</td>
             <td>{{p.nombre}}</td>
-<<<<<<< HEAD
-            <td>
-                <a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-proyectos/{{p.codigo}}">
-                    <i class="material-icons left">edit</i>Editar ciudad
-                </a>
-                &nbsp;
-                <button class="waves-effect red waves-light btn" type="button"
-=======
-            <td>{{p.descripcion}}</td>
-            <td>{{p.imagen}}</td>
             <td><a class="btn-floating waves-effect orange waves-light btn-small" 
                     routerLink="/parametros/editar-proyectos/{{p.codigo}}">
                     <i class="material-icons samll right">edit</i>
                 </a>
                 &nbsp;
                 <button class="btn-floating waves-effect red waves-light btn-small" type="button"
->>>>>>> master
                     (click)="verificarEliminacion(p.codigo, p.nombre)" name="action">
                     <i class="material-icons samll right">delete</i>
                 </button>

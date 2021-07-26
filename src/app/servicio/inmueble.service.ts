@@ -26,7 +26,7 @@ export class InmuebleService {
     });
   }
 
-  buscarRegistro(codigo: number): Observable<InmuebleModelo> {
+  buscarRegistro(codigo?: number): Observable<InmuebleModelo> {
     return this.http.get<InmuebleModelo>(`${this.url}/inmuebles/${codigo}`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
@@ -43,7 +43,8 @@ export class InmuebleService {
       codigo: modelo.codigo,
       identificador: modelo.identificador,
       valor: modelo.valor,
-      bloqueId: idBloque
+      bloqueId: idBloque,
+      solicitud: modelo.solicitud
     }, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
@@ -59,7 +60,8 @@ export class InmuebleService {
     return this.http.put<InmuebleModelo>(`${this.url}/inmuebles/${modelo.codigo}`, {
       identificador: modelo.identificador,
       valor: modelo.valor,
-      bloqueId: idBloque
+      bloqueId: idBloque,
+      solicitud: modelo.solicitud
     }, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`

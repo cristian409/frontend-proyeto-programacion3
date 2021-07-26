@@ -13,7 +13,6 @@
       <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="usuarios/listar-usuarios">Usuarios</a></li>
       <li *ngIf="isLoggedIn"><a class="dropdown-trigger" data-target="dropdown">Usuario</a></li>
       <!-- <li *ngIf="isLoggedIn"><a>{{nombreUsuario}}</a></li> -->
-      <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
     </ul>
   </div>
@@ -34,8 +33,7 @@
 
 <!-- Dropdown Structure -->
 <ul id='dropdown' class='dropdown-content'>
-  <li><a routerLink="">Cambiar Contraseña</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
   <li class="divider" tabindex="-1"></li>
-  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar contraseña</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion"><i class="material-icons">cloud</i>Cerrar Sesión</a></li>
 </ul>
