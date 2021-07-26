@@ -1,8 +1,9 @@
 export class SolicitudModelo {
-    id?: Number;
+    id?: number;
     fecha?: String;
-    ofertaEconomica?:Number;
+    ofertaEconomica?:number;
     estado?: String;
-    inmuebleId?: Number;
-    clienteId?: Number;
+    inmuebleId?: number;
+    clienteId?: number;
+    aceptarCancelarSolicitud: String = "Pendiente";
 }

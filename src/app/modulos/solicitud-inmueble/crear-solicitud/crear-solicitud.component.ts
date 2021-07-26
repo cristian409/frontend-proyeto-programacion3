@@ -83,7 +83,12 @@ export class CrearSolicitudComponent implements OnInit {
     obj.clienteId = clienteId;
     obj.ofertaEconomica = oferta;
     obj.estado = estudio;
+<<<<<<< HEAD
 
+=======
+    obj.aceptarCancelarSolicitud = "Pendiente"
+        
+>>>>>>> master
     this.servicio.GuardarRegistro(obj).subscribe(
       (datos) => {
         abrirModal('Información', 'Registro almacenado correctamente.');

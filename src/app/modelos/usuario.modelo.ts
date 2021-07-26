@@ -12,4 +12,5 @@ export class usuarioModelo {
     token?: String;
     isLoggedIn: boolean = false;
     nombreRol: String='';
+    nombreUsuario: String = this.nombre + " " + this.apellidoss;
 }

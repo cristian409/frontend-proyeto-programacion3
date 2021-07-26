@@ -1,1 +1,35 @@
-<p>cambiar-clave works!</p>
+<div class="row">
+    <fieldset>
+        <legend>Cambio de contraseña</legend>
+        <form class="col s12" [formGroup]="fgValidacion" (ngSubmit)="cambioContrasena()">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input formControlName="correo" id="correo" type="text" class="validate">
+                    <label for="correo">Correo electronico</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="contrasena_actual" id="contrasena_actual" type="text" class="validate">
+                    <label for="contrasena_actual">Actual contraseña</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="contrasena_nueva" id="contrasena_nueva" type="text" class="validate">
+                    <label for="contrasena_nueva">Nueva contraseña</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="contrasena_nueva2" id="contrasena_nueva2" type="text" class="validate">
+                    <label for="contrasena_nueva2">confirmar nueva contraseña</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <button class="waves-effect waves-light btn" type="submit"
+                        name="action">Guardar<i class="material-icons right">save</i>
+                    </button>
+                    &nbsp;
+                    <a class="waves-effect red waves-light btn" routerLink=""><i
+                            class="material-icons left">cancel</i>Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>

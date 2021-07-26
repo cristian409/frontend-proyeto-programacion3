@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { usuarioModelo } from 'src/app/modelos/usuario.modelo';
+import { UsuarioModule } from 'src/app/modulos/usuario/usuario.module';
 import { SeguridadService } from 'src/app/servicio/seguridad.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   rol?: String;
-
+  
   suscripcion: Subscription = new Subscription;
 
   constructor(private servicioSeguridad: SeguridadService) { }

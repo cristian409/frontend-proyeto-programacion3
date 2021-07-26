@@ -12,12 +12,14 @@
       <td>{{p.codigo}}</td>
       <td>{{p.nombre}}</td>
       <td>
-        <a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-pais/{{p.codigo}}">
-          <i class="material-icons left">edit</i>Editar Pais
+        <a class="btn-floating waves-effect orange waves-light btn-small" 
+          routerLink="/parametros/editar-pais/{{p.codigo}}">
+          <i class="material-icons samll right">edit</i>
         </a>
         &nbsp;
-        <button class="waves-effect red waves-light btn" type="button" (click)="verificarEliminacion()">
-          Eliminar pais<i class="material-icons right">delete</i>
+        <button class="btn-floating waves-effect red waves-light btn-small" 
+          type="button" (click)="verificarEliminacion()">
+          <i class="material-icons samll right">delete</i>
         </button>
       </td>
 

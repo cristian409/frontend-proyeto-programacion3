@@ -41,7 +41,8 @@ export class SolicitudService {
       ofertaEconomica: modelo.ofertaEconomica,
       estado: modelo.estado,
       inmuebleId: modelo.inmuebleId,
-      clienteId: modelo.clienteId
+      clienteId: modelo.clienteId,
+      aceptarCancelarSolicitud: modelo.aceptarCancelarSolicitud
     }, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
@@ -50,7 +51,7 @@ export class SolicitudService {
   }
 
 
-  AutualizarRegistro(modelo: SolicitudModelo): Observable<SolicitudModelo> {
+  ActualizarRegistro(modelo: SolicitudModelo): Observable<SolicitudModelo> {
     return this.http.put<SolicitudModelo>(`${this.url}/solicitud-inmuebles/${modelo.id}`, modelo, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
