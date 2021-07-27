@@ -26,14 +26,24 @@
   <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-pais">Paises</a></li>
   <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-ciudades">Ciudades</a></li>
   <li *ngIf="isLoggedIn && rol == 'Administrador'"><a routerLink="parametros/listar-proyectos">Proyectos</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+  <ul class="collapsible">
+    <li>
+      <div class="collapsible-header">Usuario</div>
+      <div class="collapsible-body">
+        <ul>
+          <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
+          <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
   <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
-  <li><a routerLink="/iniciar-sesion">Iniciar Sesión</a></li>
 </ul>
 
 <!-- Dropdown Structure -->
-<ul id='dropdown' class='dropdown-content'>
+<ul id='dropdown' class="dropdown-content dropdown-tabbed">
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
   <li class="divider" tabindex="-1"></li>
-  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion"><i class="material-icons">cloud</i>Cerrar Sesión</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion"><i class="material-icons">cloud</i>Cerrar Sesión</a>
+  </li>
 </ul>
