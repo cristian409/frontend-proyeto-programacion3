@@ -73,8 +73,8 @@ export class UsuariosService {
     });
   }
 
-  AutualizarRegistro(modelo: usuarioModelo): Observable<usuarioModelo> {
-    return this.http.put<usuarioModelo>(`${this.url}/usuarios/${modelo.id}/`, modelo, {
+  AutualizarRegistro(modelo?: usuarioModelo): Observable<usuarioModelo> {
+    return this.http.put<usuarioModelo>(`${this.url}/usuarios/${modelo?.id}/`, modelo, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })

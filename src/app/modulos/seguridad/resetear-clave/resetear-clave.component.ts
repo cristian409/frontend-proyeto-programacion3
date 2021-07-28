@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { usuarioModelo } from 'src/app/modelos/usuario.modelo';
 import { SeguridadService } from 'src/app/servicio/seguridad.service';
+import { UsuariosService } from 'src/app/servicio/usuarios.service';
 
 
 declare const abrirModal: any;
@@ -14,10 +15,11 @@ declare const abrirModal: any;
 export class ResetearClaveComponent implements OnInit {
 
   fgValidacion: FormGroup = this.fb.group({});
-
+  usuario?: usuarioModelo = new usuarioModelo();
   constructor(private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
-    private router: Router) { }
+    private router: Router,
+    private servicioUsuario: UsuariosService) { }
 
   construirFormulario() {
     this.fgValidacion = this.fb.group({
@@ -37,13 +39,11 @@ export class ResetearClaveComponent implements OnInit {
     let correo = this.obtenerFGV.correo.value;
     let modelo = new usuarioModelo();
     modelo.email = correo;
-    
+
     this.servicioSeguridad.validarCorreo(modelo).subscribe(
       (data) => {
-        let respuesta = data;
-        if (respuesta.enviado == 'ok') {
-          this.router.navigate(["/solicitud/listar-solicitud"]);
-        }                
+        abrirModal("¡Información!", "Usuario actualizado");
+        this.router.navigate(["/seguridad/iniciar-sesion"]);
       },
       (error: any) => {
         abrirModal("¡Datos Invalidos!", error.error.error.message);
